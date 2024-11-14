@@ -68,6 +68,7 @@ class DetailSaringanController extends Controller
 
 
             $saringanDetail = new DetailSaringan();
+            $saringanDetail->type = 'International';
             $saringanDetail->category = $request->category;
             $saringanDetail->full_name = $request->full_name;
             $saringanDetail->country = $request->country;

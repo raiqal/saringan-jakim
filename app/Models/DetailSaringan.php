@@ -9,9 +9,10 @@ class DetailSaringan extends Model
 {
     use HasFactory;
 
-    protected $table = 'detail_saringans';
+    protected $table = 'registrations';
 
     protected $fillable = [
+        'type',
         'category',
         'country',
         'full_name',
