@@ -13,8 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('detail_saringans', function (Blueprint $table) {
+        Schema::create('regisrations', function (Blueprint $table) {
             $table->id();
+            $table->string('type')->nullable();
             $table->string('category')->nullable();
             $table->string('country')->nullable();
             $table->string('full_name')->nullable();
@@ -43,6 +44,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('detail_saringans');
+        Schema::dropIfExists('regisrations');
     }
 };
