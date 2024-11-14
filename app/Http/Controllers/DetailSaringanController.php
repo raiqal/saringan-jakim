@@ -91,7 +91,7 @@ class DetailSaringanController extends Controller
                 
                 $photoName = time() . '.' . $photoExtension;
                 $photoPath = $photo->storeAs('photos', $photoName, 'public');
-                $saringanDetail->photo = $photoPath;
+                $saringanDetail->photo = url('storage/' . $photoPath); 
             }
 
             if ($request->hasFile('passport_image')) {
@@ -100,8 +100,9 @@ class DetailSaringanController extends Controller
                 
                 $passport_imageName = time() . '.' . $passport_imageExtension;
                 $passport_imagePath = $passport_image->storeAs('passportImages', $passport_imageName, 'public');
-                $saringanDetail->passport_image = $passport_imagePath;
-            }
+                
+                $saringanDetail->passport_image = url('storage/' . $passport_imagePath); 
+            }            
 
 
             $saringanDetail->save();
