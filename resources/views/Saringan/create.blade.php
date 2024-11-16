@@ -100,7 +100,7 @@
                                     <label for="passport_number">Passport Number</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="number" class="form-control" name="passport_number" id="passport_number" required>
+                                    <input type="text" class="form-control" name="passport_number" id="passport_number" required>
                                 </div>
                             </div>
             
@@ -109,7 +109,7 @@
                                     <label for="whatsapp_number">WhatsApp Number</label>
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="number" class="form-control" name="whatsapp_number" id="whatsapp_number" required>
+                                    <input type="text" class="form-control" name="whatsapp_number" id="whatsapp_number" required>
                                 </div>
                             </div>
             
@@ -235,7 +235,7 @@
         // Initialize Participation Year Options
         const participationYear = document.getElementById('participation_year');
         const currentYear = new Date().getFullYear();
-        for (let year = currentYear; year >= 1980; year--) {
+        for (let year = currentYear; year >= 2000; year--) {
             const option = document.createElement('option');
             option.value = year;
             option.textContent = year;
@@ -335,6 +335,28 @@
             const isValidSize = file.size <= maxFileSize;
             return isValidType && isValidSize;
         }
+        
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('form');
+        const whatsappNumberInput = document.getElementById('whatsapp_number');
+
+        form.addEventListener('submit', function (event) {
+            const whatsappNumber = whatsappNumberInput.value.trim();
+            const phoneNumberPattern = /^[0-9]+$/; 
+
+            if (!phoneNumberPattern.test(whatsappNumber)) {
+                event.preventDefault(); 
+                Swal.fire({
+                    title: 'Invalid Phone Number',
+                    text: 'Please enter a valid phone number (numbers only)',
+                    icon: 'error',
+                    confirmButtonColor: '#00C853',
+                    confirmButtonText: 'Ok'
+                });
+                return;
+            }
+        });
     });
-    </script>
+</script>
     
