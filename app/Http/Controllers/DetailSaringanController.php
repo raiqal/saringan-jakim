@@ -44,7 +44,6 @@ class DetailSaringanController extends Controller
      
     public function store(Request $request)
     {
-        // Validation
         $request->validate([
             'category' => 'required',
             'full_name' => 'required',
@@ -52,17 +51,16 @@ class DetailSaringanController extends Controller
             'nationality' => 'required',
             'gender' => 'required',
             'birth_date' => 'required',
-            'passport_number' => 'required',
+            'passport_number' => 'required|unique:registrations,passport_number', 
+            // 'country_code' => 'required',
             'whatsapp_number' => 'required',
             'email' => 'required',
             'permanent_address' => 'required',
             'participation' => 'required',
-            // 'country_representation' => 'required',
-            // 'participation_year' => 'required',
-            // 'ranking' => 'required',
-            'photo' => 'required', 
+            'photo' => 'required',
             'passport_image' => 'required'
         ]);
+        
 
         try {
 
@@ -160,4 +158,20 @@ class DetailSaringanController extends Controller
     {
         //
     }
+
+    public function getCountryCodes()
+    {
+        $json = file_get_contents(public_path('json/CountryCodes.json'));
+        return response()->json(json_decode($json));
+
+        dd($json);
+    }
+
+    public function getExistingUserDetail()
+    {
+        $existingUserDetail = DetailSaringan::select('passport_number', 'email', 'whatsapp_number')->get();
+        
+        return response()->json($existingUserDetail);
+    }
+
 }

@@ -22,9 +22,9 @@ return new class extends Migration
             $table->string('nationality')->nullable();
             $table->string('gender')->nullable();
             $table->string('birth_date')->nullable();
-            $table->integer('passport_number')->nullable();
+            $table->string('passport_number')->nullable();
             // $table->string('country_code')->nullable();
-            $table->integer('whatsapp_number')->nullable();
+            $table->string('whatsapp_number')->nullable();
             $table->string('email')->nullable();
             $table->string('permanent_address')->nullable();
             $table->string('participation')->nullable();

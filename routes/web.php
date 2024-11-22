@@ -27,3 +27,6 @@ Route::group(['prefix' => 'saringan', 'as' => 'saringan.'], function () {
     Route::post('store', [DetailSaringanController::class, 'store'])->name('store');
     Route::get('/congratulation', [DetailSaringanController::class, 'congratulation'])->name('congratulation');
 });
+
+Route::get('/country_code', [DetailSaringanController::class, 'getCountryCodes'])->name('country_code');
+Route::get('/existing_user_detail', [DetailSaringanController::class, 'getExistingUserDetail'])->name('existing_user_detail');
