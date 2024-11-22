@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
                     <div class="card-header">
                         <h5>Congratulations!</h5>
                     </div>
