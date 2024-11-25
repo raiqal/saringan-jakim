@@ -7,7 +7,7 @@
                 <div class="card shadow-lg p-3 mb-5 bg-body-tertiary rounded">
                     <div class="card-header">
                         <div>
-                            <h5>Registration For Participant</h5>
+                            <h5>Participantion Form</h5>
                         </div>
                     </div>
 
