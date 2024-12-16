@@ -23,17 +23,15 @@
                           {{ $message }}
                       </div>
                   @endif
-            <form  method="POST" action="{{ route('saringan.store') }}" enctype="multipart/form-data" id="myform" name="myform"> 
+            <form  method="POST" action="{{ route('saringan.store') }}" enctype="multipart/form-data">
               @csrf
                 <div class="row mb-4">
                     <div class="col-md-4">
                         <div class="card mb-4">
                             <div class="card-body">
-                                    <h5 class="card-title" >Photo</h5>
+                                    <h5 class="card-title">Picture</h5>
                                 <div class="col-md-12">
-                                    <input type="file" id="picture" class="form-control" aria-describedby="picture">
-                                    <input type="hidden" name="photo" id="photo">
-
+                                    <input type="file" id="edit-picture" class="form-control" aria-describedby="edit-picture">
                                 </div>
                                 <br>
                                 <div class="row mb-3" id="showImage" style="display: none;">
@@ -48,7 +46,6 @@
                                 <div class="row mb-3" id="showCroppedImage" style="display: none;">
                                     <div class="col-md-12 d-flex flex-column align-items-center">
                                         <div id="result_image" class="border p-3 d-inline-block">
-
                                             <img src="" alt="" class="img-fluid">
                                         </div>
                                     </div>
@@ -61,7 +58,6 @@
                                 <h5 class="card-title">Passport</h5>
                                 <div class="mb-3">
                                     <input type="file" id="edit-passport" class="form-control" aria-describedby="edit-passport">
-                                    <input type="hidden" name="passport_image" id="passport_image">
                                 </div>
 
                                 <div class="row mb-3" id="showPassportImage" style="display: none;">
@@ -88,7 +84,7 @@
                     <div class="col-md-8">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="card-title">Other</h5>
+                            {{-- <h5 class="card-title">Other Form</h5> --}}
                             <br>
                             <div class="row mb-3 d-flex justify-content-start">
                                 <div class="col-4">
@@ -98,11 +94,11 @@
                                 </div>
                                 <div class="col-8">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="category" id="category_recital" value="Recital" >
+                                        <input class="form-check-input" type="radio" name="category" id="category_recital" value="Recital" required>
                                         <label class="form-check-label" for="category_recital">Recital</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="category" id="category_memorisation" value="Memorisation" >
+                                        <input class="form-check-input" type="radio" name="category" id="category_memorisation" value="Memorisation" required>
                                         <label class="form-check-label" for="category_memorisation">Memorisation</label>
                                     </div>
                                 </div>
@@ -112,7 +108,7 @@
                                         <label for="full_name">Full Name</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="full_name" id="full_name" placeholder="Ex: Noor Ali Ahmed Mooalem" >
+                                    <input type="text" class="form-control" name="full_name" id="full_name" placeholder="Ex: Noor Ali Ahmed Mooalem" required>
                                 </div>
                             </div>
 
@@ -121,7 +117,7 @@
                                     <label for="country">Represent Country</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <select class="sapik form-control custom-dropdown" name="country" id="country" >
+                                    <select class="sapik form-control custom-dropdown" name="country" id="country" required>
                                         <option value="" disabled selected>Select a country</option>
                                     </select>
                                 </div>
@@ -132,7 +128,7 @@
                                     <label for="nationality">Nationality</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="nationality" id="nationality" placeholder="Ex: Arabian" >
+                                    <input type="text" class="form-control" name="nationality" id="nationality" placeholder="Ex: Arabian" required>
                                 </div>
                             </div>
 
@@ -141,7 +137,7 @@
                                     <label for="gender">Gender</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <select class="form-control custom-dropdown" name="gender" id="gender" >
+                                    <select class="form-control custom-dropdown" name="gender" id="gender" required>
                                         <option value="" disabled selected></option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
@@ -154,7 +150,7 @@
                                     <label for="birth_date">Birth Date</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="date" class="form-control" name="birth_date" id="birth_date" >
+                                    <input type="date" class="form-control" name="birth_date" id="birth_date" required>
                                 </div>
                             </div>
 
@@ -163,7 +159,7 @@
                                     <label for="passport_number">Passport Number</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="passport_number" id="passport_number" placeholder="Ex: A54362P" >
+                                    <input type="text" class="form-control" name="passport_number" id="passport_number" placeholder="Ex: A54362P" required>
                                 </div>
                             </div>
 
@@ -172,12 +168,12 @@
                                     <label for="country_code">Whatsapp Number</label>
                                 </div>
                                 <div class="col-md-3">
-                                    <select class="form-control custom-dropdown" name="country_code" id="country_code" >
+                                    <select class="form-control custom-dropdown" name="country_code" id="country_code" required>
                                         <option value="" disabled selected>Country code</option>
                                     </select>
                                 </div>
                                 <div class="col-md-5">
-                                    <input type="text" class="form-control" name="whatsapp_number" id="whatsapp_number" placeholder="Ex: 123456789" >
+                                    <input type="text" class="form-control" name="whatsapp_number" id="whatsapp_number" placeholder="Ex: 123456789" required>
                                 </div>
                             </div>
 
@@ -186,7 +182,7 @@
                                     <label for="email">Email</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="email" id="email" placeholder="Ex: aalimooalem@gmail.com" >
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Ex: aalimooalem@gmail.com" required>
                                 </div>
                             </div>
 
@@ -195,7 +191,7 @@
                                     <label for="permanent_address">Permanent Address</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="permanent_address" id="permanent_address" placeholder="Ex : 67/C, Ras Al Akhdar Area, Abu Dhabi, United Arab Emirates" >
+                                    <input type="text" class="form-control" name="permanent_address" id="permanent_address" placeholder="Ex : 67/C, Ras Al Akhdar Area, Abu Dhabi, United Arab Emirates" required>
                                 </div>
                             </div>
 
@@ -205,11 +201,11 @@
                                 </div>
                                 <div class="col-8">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="participation" id="participation_yes" value="Yes" >
+                                        <input class="form-check-input" type="radio" name="participation" id="participation_yes" value="Yes" required>
                                         <label class="form-check-label" for="participation_yes">Yes</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="participation" id="participation_no" value="No" >
+                                        <input class="form-check-input" type="radio" name="participation" id="participation_no" value="No" required>
                                         <label class="form-check-label" for="participation_no">No</label>
                                     </div>
                                 </div>
@@ -243,7 +239,7 @@
                                         <label for="ranking">Ranking</label>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text" class="form-control" name="ranking" id="ranking" placeholder="Ex: 1st" >
+                                        <input type="text" class="form-control" name="ranking" id="ranking">
                                     </div>
                                 </div>
                             </div>
@@ -251,9 +247,6 @@
                     </div>
                     </div>
                 </div>
-{{-- 
-                <img id="result_image" src="example.jpg" alt="Result Image" />
-                <input type="text" id="image_input" name="image_src" /> --}}
 
                 <div class="text-end">
                     <button type="submit" class="btn btn-primary">Submit</button>
@@ -262,24 +255,9 @@
       </div>
     </div>
   </div>
-<script>
-$(document).ready(function () {
-
-$('#myform').validate({ // initialize the plugin
-    rules: {
-        full_name: {
-            required: true,
-            
-        }
-    }
-});
-
-});
-</script>
 @endsection
 <script>
     document.addEventListener('DOMContentLoaded', () => {
-
         $('#country').select2({
             placeholder: 'Select a country',
             allowClear: true,
@@ -379,7 +357,17 @@ $('#myform').validate({ // initialize the plugin
 
         const form = document.querySelector('form');
         form.addEventListener('submit', event => {
-            
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#00C853',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+            }).then(result => {
+                if (result.isConfirmed) form.submit();
+            });
         });
 
         const additionalFields = document.getElementById('additional-fields');
@@ -395,7 +383,7 @@ $('#myform').validate({ // initialize the plugin
 
         function isValidFile(file) {
             return allowedFileTypes.includes(file.type) && file.size <= maxFileSize;
-        }
+        };
 
         let existingUserDetails = [];
         fetch('/existing_user_detail')
@@ -403,89 +391,59 @@ $('#myform').validate({ // initialize the plugin
             .then(data => existingUserDetails = data)
             .catch(error => console.error('Error fetching user details:', error));
 
-            form.addEventListener('submit', event => {
-                const passportInput = document.getElementById('passport_number').value.trim();
-                const emailInput = document.getElementById('email').value.trim();
-                const whatsappInput = document.getElementById('whatsapp_number').value.trim();
+        form.addEventListener('submit', event => {
+            const passportInput = document.getElementById('passport_number').value.trim();
+            const emailInput = document.getElementById('email').value.trim();
+            const whatsappInput = document.getElementById('whatsapp_number').value.trim();
+            const emailInput = document.getElementById('email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-                const duplicateCheck = [
-                    { field: 'passport_number', value: passportInput, message: 'This passport number already exists.' },
-                    { field: 'email', value: emailInput, message: 'This email is already registered.' },
-                    { field: 'whatsapp_number', value: whatsappInput, message: 'This WhatsApp number is already registered.' }
-                ];  
+            const duplicateCheck = [
+                { field: 'passport_number', value: passportInput, message: 'This passport number already exists.' },
+                { field: 'email', value: emailInput, message: 'This email is already registered.' },
+                { field: 'whatsapp_number', value: whatsappInput, message: 'This WhatsApp number is already registered.' }
+            ];
 
-                // Regular expression to check for a valid email format
-                const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            for (const { field, value, message } of duplicateCheck) {
+                if (existingUserDetails.find(user => user[field] === value)) {
+                    event.preventDefault();
+                    Swal.fire({
+                        title: 'Error',
+                        text: message,
+                        icon: 'error',
+                        confirmButtonColor: '#00C853',
+                        confirmButtonText: 'Ok'
+                    });
+                    return;
+                }
+            }
 
-                // Check for required fields
-                // if (!passportInput) {
-                //     event.preventDefault();
-                //     Swal.fire({
-                //         title: 'Error',
-                //         text: 'Passport number is required.',
-                //         icon: 'error',
-                //         confirmButtonColor: '#00C853',
-                //         confirmButtonText: 'Ok'
-                //     });
-                //     return;
-                // }
-
-                // // Validate the email format
-                // if (emailInput && !emailRegex.test(emailInput)) {
-                //     event.preventDefault();
-                //     Swal.fire({
-                //         title: 'Error',
-                //         text: 'Please enter a valid email address.',
-                //         icon: 'error',
-                //         confirmButtonColor: '#00C853',
-                //         confirmButtonText: 'Ok'
-                //     });
-                //     return;
-                // }
-
-                // for (const { field, value, message } of duplicateCheck) {
-                //     if (existingUserDetails.find(user => user[field] === value)) {
-                //         event.preventDefault();
-                //         Swal.fire({
-                //             title: 'Error',
-                //             text: message,
-                //             icon: 'error',
-                //             confirmButtonColor: '#00C853',
-                //             confirmButtonText: 'Ok'
-                //         });
-                //         return;
-                //     }
-                // }
-
+            if (!emailRegex.test(emailInput.value)) {
                 event.preventDefault();
                 Swal.fire({
-                    title: 'Are you sure?',
-                    icon: 'warning',
-                    showCancelButton: true,
+                    title: 'Invalid Email',
+                    text: 'Please enter a valid email address.',
+                    icon: 'error',
                     confirmButtonColor: '#00C853',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes'
-                }).then(result => {
-                    if (result.isConfirmed) form.submit();
+                    confirmButtonText: 'Ok'
                 });
-            });
-
+                return;
+            }
+        });
 
         let profileCroppieInstance, passportCroppieInstance;
 
-        const editProfilePicture = document.getElementById("picture");
+        const editProfilePicture = document.getElementById("edit-picture");
         const showImage = document.getElementById("showImage");
         const cropButton = document.getElementById("crop");
         const showCroppedImage = document.getElementById("showCroppedImage");
         const resultImage = document.getElementById("result_image");
-        // console.log(editProfilePicture);
 
         const editPassportPicture = document.getElementById("edit-passport");
         const showPassportImage = document.getElementById("showPassportImage");
         const cropPassportButton = document.getElementById("cropPassport");
         const showCroppedPassportImage = document.getElementById("showCroppedPassportImage");
         const passportResultImage = document.getElementById("passport-result_image");
-
 
         // Handle profile picture file selection and cropping
         editProfilePicture.addEventListener("change", function () {
@@ -501,8 +459,8 @@ $('#myform').validate({ // initialize the plugin
                 reader.onload = function (e) {
                     const croppieElement = document.getElementById("croppie");
                     profileCroppieInstance = new Croppie(croppieElement, {
-                        boundary: { width: 350, height: 350 },
-                        viewport: { width: 350, height: 350, type: "square" },
+                        boundary: { width: 200, height: 200 },
+                        viewport: { width: 200, height: 200, type: "square" },
                     });
                     profileCroppieInstance.bind({ url: e.target.result });
                     showImage.style.display = "block";
@@ -516,47 +474,7 @@ $('#myform').validate({ // initialize the plugin
                 resultImage.innerHTML = `<img src="${dataImg}" class="img-fluid" />`;
                 showImage.style.display = "none";
                 showCroppedImage.style.display = "block";
-                
-                // Set the base64 image data into the hidden input
-                document.getElementById('photo').value = dataImg;
-            });
-        });
-
-
-        // Handle passport picture file selection and cropping
-        editPassportPicture.addEventListener("change", function () {
-            showCroppedPassportImage.style.display = "none";
-            passportResultImage.innerHTML = "";
-            showPassportImage.style.display = "none";
-            if (passportCroppieInstance) {
-                passportCroppieInstance.destroy();
-            }
-
-            if (this.files && this.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    const croppieElement = document.getElementById("passport-croppie");
-                    passportCroppieInstance = new Croppie(croppieElement, {
-                        boundary: { width: 300, height: 300 },
-                        viewport: { width: 300, height: 300, type: "square" },
-                    });
-                    passportCroppieInstance.bind({ url: e.target.result });
-                    showPassportImage.style.display = "block";
-                };
-                reader.readAsDataURL(this.files[0]);
-            }
-        });
-
-        cropPassportButton.addEventListener("click", function () {
-            passportCroppieInstance.result({ type: "base64" }).then(function (passportImg) {
-                passportResultImage.innerHTML = `<img src="${passportImg}" class="img-fluid" />`;
-                showPassportImage.style.display = "none";
-                showCroppedPassportImage.style.display = "block";
-
-                 // Set the base64 image data into the hidden input
-                 document.getElementById('passport_image').value = passportImg;
             });
         });
     });
 </script>
-
