@@ -23,7 +23,7 @@
                           {{ $message }}
                       </div>
                   @endif
-            <form  method="POST" action="{{ route('saringan.store') }}" enctype="multipart/form-data" id="myform" name="myform"> 
+            <form  method="POST" action="{{ route('saringan.store') }}" enctype="multipart/form-data"> 
               @csrf
                 <div class="row mb-4">
                     <div class="col-md-4">
@@ -31,7 +31,7 @@
                             <div class="card-body">
                                     <h5 class="card-title" >Photo</h5>
                                 <div class="col-md-12">
-                                    <input type="file" id="picture" class="form-control" aria-describedby="picture">
+                                    <input type="file" id="picture" class="form-control" aria-describedby="picture" required>
                                     <input type="hidden" name="photo" id="photo">
 
                                 </div>
@@ -60,7 +60,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Passport</h5>
                                 <div class="mb-3">
-                                    <input type="file" id="edit-passport" class="form-control" aria-describedby="edit-passport">
+                                    <input type="file" id="edit-passport" class="form-control" aria-describedby="edit-passport" required>
                                     <input type="hidden" name="passport_image" id="passport_image">
                                 </div>
 
@@ -98,11 +98,11 @@
                                 </div>
                                 <div class="col-8">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="category" id="category_recital" value="Recital" >
+                                        <input class="form-check-input" type="radio" name="category" id="category_recital" value="Recital" required>
                                         <label class="form-check-label" for="category_recital">Recital</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="category" id="category_memorisation" value="Memorisation" >
+                                        <input class="form-check-input" type="radio" name="category" id="category_memorisation" value="Memorisation" required>
                                         <label class="form-check-label" for="category_memorisation">Memorisation</label>
                                     </div>
                                 </div>
@@ -112,7 +112,7 @@
                                         <label for="full_name">Full Name</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="full_name" id="full_name" placeholder="Ex: Noor Ali Ahmed Mooalem" >
+                                    <input type="text" class="form-control" name="full_name" id="full_name" placeholder="Ex: Noor Ali Ahmed Mooalem" required>
                                 </div>
                             </div>
 
@@ -121,7 +121,7 @@
                                     <label for="country">Represent Country</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <select class="sapik form-control custom-dropdown" name="country" id="country" >
+                                    <select class="sapik form-control custom-dropdown" name="country" id="country" required>
                                         <option value="" disabled selected>Select a country</option>
                                     </select>
                                 </div>
@@ -132,7 +132,7 @@
                                     <label for="nationality">Nationality</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="nationality" id="nationality" placeholder="Ex: Arabian" >
+                                    <input type="text" class="form-control" name="nationality" id="nationality" placeholder="Ex: Arabian" required>
                                 </div>
                             </div>
 
@@ -141,7 +141,7 @@
                                     <label for="gender">Gender</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <select class="form-control custom-dropdown" name="gender" id="gender" >
+                                    <select class="form-control custom-dropdown" name="gender" id="gender" required>
                                         <option value="" disabled selected></option>
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
@@ -154,7 +154,7 @@
                                     <label for="birth_date">Birth Date</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="date" class="form-control" name="birth_date" id="birth_date" >
+                                    <input type="date" class="form-control" name="birth_date" id="birth_date" required>
                                 </div>
                             </div>
 
@@ -163,7 +163,7 @@
                                     <label for="passport_number">Passport Number</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="passport_number" id="passport_number" placeholder="Ex: A54362P" >
+                                    <input type="text" class="form-control" name="passport_number" id="passport_number" placeholder="Ex: A54362P" required>
                                 </div>
                             </div>
 
@@ -177,7 +177,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-5">
-                                    <input type="text" class="form-control" name="whatsapp_number" id="whatsapp_number" placeholder="Ex: 123456789" >
+                                    <input type="text" class="form-control" name="whatsapp_number" id="whatsapp_number" placeholder="Ex: 123456789" required>
                                 </div>
                             </div>
 
@@ -186,7 +186,7 @@
                                     <label for="email">Email</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="email" id="email" placeholder="Ex: aalimooalem@gmail.com" >
+                                    <input type="text" class="form-control" name="email" id="email" placeholder="Ex: aalimooalem@gmail.com" required>
                                 </div>
                             </div>
 
@@ -195,7 +195,7 @@
                                     <label for="permanent_address">Permanent Address</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="permanent_address" id="permanent_address" placeholder="Ex : 67/C, Ras Al Akhdar Area, Abu Dhabi, United Arab Emirates" >
+                                    <input type="text" class="form-control" name="permanent_address" id="permanent_address" placeholder="Ex : 67/C, Ras Al Akhdar Area, Abu Dhabi, United Arab Emirates" required>
                                 </div>
                             </div>
 
@@ -205,11 +205,11 @@
                                 </div>
                                 <div class="col-8">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="participation" id="participation_yes" value="Yes" >
+                                        <input class="form-check-input" type="radio" name="participation" id="participation_yes" value="Yes" required>
                                         <label class="form-check-label" for="participation_yes">Yes</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="participation" id="participation_no" value="No" >
+                                        <input class="form-check-input" type="radio" name="participation" id="participation_no" value="No" required>
                                         <label class="form-check-label" for="participation_no">No</label>
                                     </div>
                                 </div>
@@ -251,10 +251,6 @@
                     </div>
                     </div>
                 </div>
-{{-- 
-                <img id="result_image" src="example.jpg" alt="Result Image" />
-                <input type="text" id="image_input" name="image_src" /> --}}
-
                 <div class="text-end">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
@@ -262,20 +258,6 @@
       </div>
     </div>
   </div>
-<script>
-$(document).ready(function () {
-
-$('#myform').validate({ // initialize the plugin
-    rules: {
-        full_name: {
-            required: true,
-            
-        }
-    }
-});
-
-});
-</script>
 @endsection
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -379,7 +361,17 @@ $('#myform').validate({ // initialize the plugin
 
         const form = document.querySelector('form');
         form.addEventListener('submit', event => {
-            
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#00C853',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes'
+            }).then(result => {
+                if (result.isConfirmed) form.submit();
+            });
         });
 
         const additionalFields = document.getElementById('additional-fields');
@@ -397,78 +389,66 @@ $('#myform').validate({ // initialize the plugin
             return allowedFileTypes.includes(file.type) && file.size <= maxFileSize;
         }
 
+        form.addEventListener('submit', event => {
+            const photoFile = document.getElementById('photo').files[0];
+            const passportImageFile = document.getElementById('passport_image').files[0];
+
+            if (photoFile && !isValidFile(photoFile)) {
+                event.preventDefault();
+                Swal.fire({
+                    title: 'Invalid Photo File',
+                    text: 'Please upload a valid image (JPEG, PNG) and ensure the file size does not exceed 2MB.',
+                    icon: 'error',
+                    confirmButtonColor: '#00C853',
+                    confirmButtonText: 'Ok'
+                });
+                return;
+            }
+
+            if (passportImageFile && !isValidFile(passportImageFile)) {
+                event.preventDefault();
+                Swal.fire({
+                    title: 'Invalid Passport Image File',
+                    text: 'Please upload a valid image (JPEG, PNG) and ensure the file size does not exceed 2MB.',
+                    icon: 'error',
+                    confirmButtonColor: '#00C853',
+                    confirmButtonText: 'Ok'
+                });
+                return;
+            }
+        });
+
         let existingUserDetails = [];
         fetch('/existing_user_detail')
             .then(response => response.json())
             .then(data => existingUserDetails = data)
             .catch(error => console.error('Error fetching user details:', error));
 
-            form.addEventListener('submit', event => {
-                const passportInput = document.getElementById('passport_number').value.trim();
-                const emailInput = document.getElementById('email').value.trim();
-                const whatsappInput = document.getElementById('whatsapp_number').value.trim();
+        form.addEventListener('submit', event => {
+            const passportInput = document.getElementById('passport_number').value.trim();
+            const emailInput = document.getElementById('email').value.trim();
+            const whatsappInput = document.getElementById('whatsapp_number').value.trim();
 
-                const duplicateCheck = [
-                    { field: 'passport_number', value: passportInput, message: 'This passport number already exists.' },
-                    { field: 'email', value: emailInput, message: 'This email is already registered.' },
-                    { field: 'whatsapp_number', value: whatsappInput, message: 'This WhatsApp number is already registered.' }
-                ];  
+            const duplicateCheck = [
+                { field: 'passport_number', value: passportInput, message: 'This passport number already exists.' },
+                { field: 'email', value: emailInput, message: 'This email is already registered.' },
+                { field: 'whatsapp_number', value: whatsappInput, message: 'This WhatsApp number is already registered.' }
+            ];
 
-                // Regular expression to check for a valid email format
-                const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-                // Check for required fields
-                // if (!passportInput) {
-                //     event.preventDefault();
-                //     Swal.fire({
-                //         title: 'Error',
-                //         text: 'Passport number is required.',
-                //         icon: 'error',
-                //         confirmButtonColor: '#00C853',
-                //         confirmButtonText: 'Ok'
-                //     });
-                //     return;
-                // }
-
-                // // Validate the email format
-                // if (emailInput && !emailRegex.test(emailInput)) {
-                //     event.preventDefault();
-                //     Swal.fire({
-                //         title: 'Error',
-                //         text: 'Please enter a valid email address.',
-                //         icon: 'error',
-                //         confirmButtonColor: '#00C853',
-                //         confirmButtonText: 'Ok'
-                //     });
-                //     return;
-                // }
-
-                // for (const { field, value, message } of duplicateCheck) {
-                //     if (existingUserDetails.find(user => user[field] === value)) {
-                //         event.preventDefault();
-                //         Swal.fire({
-                //             title: 'Error',
-                //             text: message,
-                //             icon: 'error',
-                //             confirmButtonColor: '#00C853',
-                //             confirmButtonText: 'Ok'
-                //         });
-                //         return;
-                //     }
-                // }
-
-                event.preventDefault();
-                Swal.fire({
-                    title: 'Are you sure?',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#00C853',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Yes'
-                }).then(result => {
-                    if (result.isConfirmed) form.submit();
-                });
-            });
+            for (const { field, value, message } of duplicateCheck) {
+                if (existingUserDetails.find(user => user[field] === value)) {
+                    event.preventDefault();
+                    Swal.fire({
+                        title: 'Error',
+                        text: message,
+                        icon: 'error',
+                        confirmButtonColor: '#00C853',
+                        confirmButtonText: 'Ok'
+                    });
+                    return;
+                }
+            }
+        });
 
 
         let profileCroppieInstance, passportCroppieInstance;
