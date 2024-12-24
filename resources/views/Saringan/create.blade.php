@@ -37,9 +37,9 @@
                                 </div>
                                 <br>
                                 <div class="row mb-3" id="showImage" style="display: none;">
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 d-flex flex-column align-items-center">
                                         <div id="croppie" class="mt-2">
-                                            <img src="" alt="">
+                                            <img src="" alt="" class="img-fluid">
                                         </div>
                                         <a href="javascript:;" class="btn btn-primary mt-3" id="crop">Crop</a>
                                     </div>
@@ -48,7 +48,6 @@
                                 <div class="row mb-3" id="showCroppedImage" style="display: none;">
                                     <div class="col-md-12 d-flex flex-column align-items-center">
                                         <div id="result_image" class="border p-3 d-inline-block">
-
                                             <img src="" alt="" class="img-fluid">
                                         </div>
                                     </div>
@@ -65,9 +64,9 @@
                                 </div>
 
                                 <div class="row mb-3" id="showPassportImage" style="display: none;">
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 d-flex flex-column align-items-center">
                                         <div id="passport-croppie" class="mt-2">
-                                            <img src="" alt="">
+                                            <img src="" alt="" class="img-fluid">
                                         </div>
                                         <a href="javascript:;" class="btn btn-primary mt-3" id="cropPassport">Crop</a>
                                     </div>
@@ -481,8 +480,8 @@
                 reader.onload = function (e) {
                     const croppieElement = document.getElementById("croppie");
                     profileCroppieInstance = new Croppie(croppieElement, {
-                        boundary: { width: 350, height: 350 },
-                        viewport: { width: 350, height: 350, type: "square" },
+                        boundary: { width: 300, height: 300 },
+                        viewport: { width: 300, height: 300, type: "square" },
                     });
                     profileCroppieInstance.bind({ url: e.target.result });
                     showImage.style.display = "block";
