@@ -23,21 +23,23 @@
                           {{ $message }}
                       </div>
                   @endif
-            <form  method="POST" action="{{ route('saringan.store') }}" enctype="multipart/form-data">
+            <form  method="POST" action="{{ route('saringan.store') }}" enctype="multipart/form-data"> 
               @csrf
                 <div class="row mb-4">
                     <div class="col-md-4">
                         <div class="card mb-4">
                             <div class="card-body">
-                                    <h5 class="card-title">Picture</h5>
+                                    <h5 class="card-title" >Photo</h5>
                                 <div class="col-md-12">
-                                    <input type="file" id="edit-picture" class="form-control" aria-describedby="edit-picture">
+                                    <input type="file" id="picture" class="form-control" aria-describedby="picture" required>
+                                    <input type="hidden" name="photo" id="photo">
+
                                 </div>
                                 <br>
                                 <div class="row mb-3" id="showImage" style="display: none;">
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 d-flex flex-column align-items-center">
                                         <div id="croppie" class="mt-2">
-                                            <img src="" alt="">
+                                            <img src="" alt="" class="img-fluid">
                                         </div>
                                         <a href="javascript:;" class="btn btn-primary mt-3" id="crop">Crop</a>
                                     </div>
@@ -57,13 +59,14 @@
                             <div class="card-body">
                                 <h5 class="card-title">Passport</h5>
                                 <div class="mb-3">
-                                    <input type="file" id="edit-passport" class="form-control" aria-describedby="edit-passport">
+                                    <input type="file" id="edit-passport" class="form-control" aria-describedby="edit-passport" required>
+                                    <input type="hidden" name="passport_image" id="passport_image">
                                 </div>
 
                                 <div class="row mb-3" id="showPassportImage" style="display: none;">
-                                    <div class="col-md-12">
+                                    <div class="col-md-12 d-flex flex-column align-items-center">
                                         <div id="passport-croppie" class="mt-2">
-                                            <img src="" alt="">
+                                            <img src="" alt="" class="img-fluid">
                                         </div>
                                         <a href="javascript:;" class="btn btn-primary mt-3" id="cropPassport">Crop</a>
                                     </div>
@@ -84,7 +87,7 @@
                     <div class="col-md-8">
                     <div class="card">
                         <div class="card-body">
-                            {{-- <h5 class="card-title">Other Form</h5> --}}
+                            <h5 class="card-title">Other</h5>
                             <br>
                             <div class="row mb-3 d-flex justify-content-start">
                                 <div class="col-4">
@@ -108,7 +111,7 @@
                                         <label for="full_name">Full Name</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="full_name" id="full_name" placeholder="Ex: Noor Ali Ahmed Mooalem" required>
+                                    <input type="text" class="form-control" name="full_name" id="full_name" placeholder="Full Name" required>
                                 </div>
                             </div>
 
@@ -118,7 +121,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <select class="sapik form-control custom-dropdown" name="country" id="country" required>
-                                        <option value="" disabled selected>Select a country</option>
+                                        <option value="" disabled selected>Select country</option>
                                     </select>
                                 </div>
                             </div>
@@ -128,7 +131,7 @@
                                     <label for="nationality">Nationality</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="nationality" id="nationality" placeholder="Ex: Arabian" required>
+                                    <input type="text" class="form-control" name="nationality" id="nationality" placeholder="Nationality" required>
                                 </div>
                             </div>
 
@@ -159,7 +162,7 @@
                                     <label for="passport_number">Passport Number</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="passport_number" id="passport_number" placeholder="Ex: A54362P" required>
+                                    <input type="text" class="form-control" name="passport_number" id="passport_number" placeholder="Passport Number" required>
                                 </div>
                             </div>
 
@@ -168,12 +171,12 @@
                                     <label for="country_code">Whatsapp Number</label>
                                 </div>
                                 <div class="col-md-3">
-                                    <select class="form-control custom-dropdown" name="country_code" id="country_code" required>
+                                    <select class="form-control custom-dropdown" name="country_code" id="country_code" >
                                         <option value="" disabled selected>Country code</option>
                                     </select>
                                 </div>
                                 <div class="col-md-5">
-                                    <input type="text" class="form-control" name="whatsapp_number" id="whatsapp_number" placeholder="Ex: 123456789" required>
+                                    <input type="text" class="form-control" name="whatsapp_number" id="whatsapp_number" placeholder="Whatsapp Number" required>
                                 </div>
                             </div>
 
@@ -182,7 +185,7 @@
                                     <label for="email">Email</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="Ex: aalimooalem@gmail.com" required>
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
                                 </div>
                             </div>
 
@@ -191,7 +194,7 @@
                                     <label for="permanent_address">Permanent Address</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="permanent_address" id="permanent_address" placeholder="Ex : 67/C, Ras Al Akhdar Area, Abu Dhabi, United Arab Emirates" required>
+                                    <input type="text" class="form-control" name="permanent_address" id="permanent_address" placeholder="Permanent Address" required>
                                 </div>
                             </div>
 
@@ -218,7 +221,7 @@
                                     </div>
                                     <div class="col-8">
                                         <select class="form-control custom-dropdown" name="country_representation" id="country_representation">
-                                            <option value="" disabled selected>Select a country</option>
+                                            <option value="" disabled selected>Select country</option>
                                         </select>
                                     </div>
                                 </div>
@@ -229,7 +232,7 @@
                                     </div>
                                     <div class="col-8">
                                         <select class="form-control" name="participation_year" id="participation_year">
-                                            <option value="">Select a year</option>
+                                            <option value="">Select year</option>
                                         </select>
                                     </div>
                                 </div>
@@ -239,7 +242,7 @@
                                         <label for="ranking">Ranking</label>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text" class="form-control" name="ranking" id="ranking">
+                                        <input type="text" class="form-control" name="ranking" id="ranking" placeholder="Ranking" >
                                     </div>
                                 </div>
                             </div>
@@ -247,7 +250,6 @@
                     </div>
                     </div>
                 </div>
-
                 <div class="text-end">
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
@@ -258,14 +260,26 @@
 @endsection
 <script>
     document.addEventListener('DOMContentLoaded', () => {
+
+        let fields = ["full_name", "passport_number", "nationality", "permanent_address"];
+
+        fields.forEach(function(id) {
+            let inputField = document.getElementById(id);
+            if (inputField) {
+                inputField.addEventListener("input", function() {
+                    this.value = this.value.toUpperCase();
+                });
+            }
+        });
+
         $('#country').select2({
-            placeholder: 'Select a country',
+            placeholder: 'Select country',
             allowClear: true,
             width: '100%' 
         });
 
         $('#country_code').select2({
-            placeholder: 'Select a country code',
+            placeholder: 'Select country code',
             allowClear: true,
             width: '100%'
         });
@@ -277,7 +291,13 @@
         });
 
         $('#country_representation').select2({
-            placeholder: 'Select a country',
+            placeholder: 'Select country',
+            allowClear: true,
+            width: '100%'
+        });
+
+        $('#participation_year').select2({
+            placeholder: 'Select year',
             allowClear: true,
             width: '100%'
         });
@@ -285,7 +305,6 @@
         fetch('/existing_user_detail')
             .then(response => response.json())
             .then(data => {
-                // console.log(data);
                 data.forEach(passportNumber => console.log(passportNumber));
             })
             .catch(error => console.error('Error fetching data:', error));
@@ -310,7 +329,7 @@
                 countrySelect.append(countryOption);
 
                 const codeOption = new Option(`${dial_code}`, dial_code);
-                $(codeOption).data('image', image); // Attach the flag image URL
+                $(codeOption).data('image', image); 
                 countryCodeSelect.append(codeOption);
 
                 const representationOption = new Option(name, name);
@@ -322,13 +341,11 @@
                 const countryCode = countryCodes[selectedCountry];
                 if (countryCode) {
                     $('#country_code').val(countryCode).trigger('change');
-                    whatsappNumberInput.value = countryCode;
                 }
             });
 
             $('#country_code').on('change', function () {
                 const selectedCountryCode = $(this).val();
-                if (selectedCountryCode) whatsappNumberInput.value = selectedCountryCode;
             });
 
             countryCodeSelect.select2({
@@ -338,7 +355,7 @@
 
             function formatFlagOption(option) {
                 if (!option.id) return option.text; 
-                const image = $(option.element).data('image'); // Retrieve the flag URL
+                const image = $(option.element).data('image'); 
                 if (image) {
                     return $(`<span><img src="${image}" style="width: 20px; height: 15px; margin-right: 10px;" />${option.text}</span>`);
                 }
@@ -378,12 +395,14 @@
             additionalFields.style.display = 'none';
         });
 
-        const allowedFileTypes = ['image/jpeg', 'image/png', 'image/jpg'];
-        const maxFileSize = 2 * 1024 * 1024; 
+        const whatsappInput = document.getElementById('whatsapp_number');
+        whatsappInput.addEventListener('input', function(event) {
+        let inputValue = event.target.value;
 
-        function isValidFile(file) {
-            return allowedFileTypes.includes(file.type) && file.size <= maxFileSize;
-        };
+        inputValue = inputValue.replace(/[^0-9+\s]/g, '');
+
+        event.target.value = inputValue;
+        });
 
         let existingUserDetails = [];
         fetch('/existing_user_detail')
@@ -395,8 +414,6 @@
             const passportInput = document.getElementById('passport_number').value.trim();
             const emailInput = document.getElementById('email').value.trim();
             const whatsappInput = document.getElementById('whatsapp_number').value.trim();
-            const emailInput = document.getElementById('email');
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
             const duplicateCheck = [
                 { field: 'passport_number', value: passportInput, message: 'This passport number already exists.' },
@@ -417,23 +434,11 @@
                     return;
                 }
             }
-
-            if (!emailRegex.test(emailInput.value)) {
-                event.preventDefault();
-                Swal.fire({
-                    title: 'Invalid Email',
-                    text: 'Please enter a valid email address.',
-                    icon: 'error',
-                    confirmButtonColor: '#00C853',
-                    confirmButtonText: 'Ok'
-                });
-                return;
-            }
         });
 
         let profileCroppieInstance, passportCroppieInstance;
 
-        const editProfilePicture = document.getElementById("edit-picture");
+        const editProfilePicture = document.getElementById("picture");
         const showImage = document.getElementById("showImage");
         const cropButton = document.getElementById("crop");
         const showCroppedImage = document.getElementById("showCroppedImage");
@@ -445,36 +450,103 @@
         const showCroppedPassportImage = document.getElementById("showCroppedPassportImage");
         const passportResultImage = document.getElementById("passport-result_image");
 
-        // Handle profile picture file selection and cropping
+        function validateImage(file) {
+            const validImageTypes = ["image/jpeg", "image/png", "image/jpg"];
+            if (!validImageTypes.includes(file.type)) {
+                Swal.fire({
+                    title: "Invalid File",
+                    text: "Only JPG, JPEG, and PNG images are allowed.",
+                    icon: "error",
+                    confirmButtonColor: "#00C853",
+                    confirmButtonText: "Ok"
+                });
+                return false;
+            }
+            if (file.size > 5 * 1024 * 1024) {
+                Swal.fire({
+                    title: "File Too Large",
+                    text: "The uploaded file must not exceed 5MB.",
+                    icon: "error",
+                    confirmButtonColor: "#00C853",
+                    confirmButtonText: "Ok"
+                });
+                return false;
+            }
+            return true;
+        }
+
         editProfilePicture.addEventListener("change", function () {
+            const file = this.files[0];
+            if (!file || !validateImage(file)) {
+                this.value = ""; // Clear the file input
+                return;
+            }
+
             showCroppedImage.style.display = "none";
             resultImage.innerHTML = "";
             showImage.style.display = "none";
-            if (profileCroppieInstance) {
-                profileCroppieInstance.destroy();
-            }
+            if (profileCroppieInstance) profileCroppieInstance.destroy();
 
-            if (this.files && this.files[0]) {
-                const reader = new FileReader();
-                reader.onload = function (e) {
-                    const croppieElement = document.getElementById("croppie");
-                    profileCroppieInstance = new Croppie(croppieElement, {
-                        boundary: { width: 200, height: 200 },
-                        viewport: { width: 200, height: 200, type: "square" },
-                    });
-                    profileCroppieInstance.bind({ url: e.target.result });
-                    showImage.style.display = "block";
-                };
-                reader.readAsDataURL(this.files[0]);
-            }
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const croppieElement = document.getElementById("croppie");
+                profileCroppieInstance = new Croppie(croppieElement, {
+                    boundary: { width: 300, height: 300 },
+                    viewport: { width: 300, height: 300, type: "square" },
+                });
+                profileCroppieInstance.bind({ url: e.target.result });
+                showImage.style.display = "block";
+            };
+            reader.readAsDataURL(file);
         });
 
         cropButton.addEventListener("click", function () {
-            profileCroppieInstance.result({ type: "base64" }).then(function (dataImg) {
-                resultImage.innerHTML = `<img src="${dataImg}" class="img-fluid" />`;
-                showImage.style.display = "none";
-                showCroppedImage.style.display = "block";
-            });
+            if (profileCroppieInstance) {
+                profileCroppieInstance.result({ type: "base64" }).then(function (dataImg) {
+                    resultImage.innerHTML = `<img src="${dataImg}" class="img-fluid" />`;
+                    showImage.style.display = "none";
+                    showCroppedImage.style.display = "block";
+                    document.getElementById('photo').value = dataImg;
+                });
+            }
+        });
+
+        editPassportPicture.addEventListener("change", function () {
+            const file = this.files[0];
+            if (!file || !validateImage(file)) {
+                this.value = ""; // Clear the file input
+                return;
+            }
+
+            showCroppedPassportImage.style.display = "none";
+            passportResultImage.innerHTML = "";
+            showPassportImage.style.display = "none";
+            if (passportCroppieInstance) passportCroppieInstance.destroy();
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const croppieElement = document.getElementById("passport-croppie");
+                passportCroppieInstance = new Croppie(croppieElement, {
+                    boundary: { width: 300, height: 300 },
+                    viewport: { width: 300, height: 300, type: "square" },
+                });
+                passportCroppieInstance.bind({ url: e.target.result });
+                showPassportImage.style.display = "block";
+            };
+            reader.readAsDataURL(file);
+        });
+
+        cropPassportButton.addEventListener("click", function () {
+            if (passportCroppieInstance) {
+                passportCroppieInstance.result({ type: "base64" }).then(function (passportImg) {
+                    passportResultImage.innerHTML = `<img src="${passportImg}" class="img-fluid" />`;
+                    showPassportImage.style.display = "none";
+                    showCroppedPassportImage.style.display = "block";
+                    document.getElementById('passport_image').value = passportImg;
+                });
+            }
         });
     });
 </script>
+
+

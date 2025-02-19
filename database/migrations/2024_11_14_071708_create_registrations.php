@@ -15,24 +15,25 @@ return new class extends Migration
     {
         Schema::create('registrations', function (Blueprint $table) {
             $table->id();
-            $table->string('type')->nullable();
-            $table->string('category')->nullable();
-            $table->string('country')->nullable();
-            $table->string('full_name')->nullable();
-            $table->string('nationality')->nullable();
-            $table->string('gender')->nullable();
-            $table->string('birth_date')->nullable();
-            $table->string('passport_number')->nullable();
-            // $table->string('country_code')->nullable();
-            $table->string('whatsapp_number')->nullable();
-            $table->string('email')->nullable();
-            $table->string('permanent_address')->nullable();
-            $table->string('participation')->nullable();
+            $table->string('type');
+            $table->string('year');
+            $table->string('category');
+            $table->string('country');
+            $table->string('full_name');
+            $table->string('nationality');
+            $table->string('gender');
+            $table->string('birth_date');
+            $table->string('passport_number');
+            $table->string('country_code');
+            $table->string('whatsapp_number');
+            $table->string('email');
+            $table->string('permanent_address');
+            $table->string('participation');
             $table->string('country_representation')->nullable();
             $table->integer('participation_year')->nullable();
             $table->string('ranking')->nullable();
-            $table->string('photo')->nullable();
-            $table->string('passport_image')->nullable();
+            $table->string('photo');
+            $table->string('passport_image');
             $table->timestamps();
         });
     }

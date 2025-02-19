@@ -15,7 +15,7 @@ use App\Http\Controllers\DetailSaringanController;
 */
 
 Route::get('/', function () {
-    return view('saringan.create');
+    return view('SaringanJakim.create');
 });
 
 // Auth::routes();

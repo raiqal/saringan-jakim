@@ -9,19 +9,14 @@ use Illuminate\Support\Facades\Storage;
 
 class DetailSaringanController extends Controller
 {
-    public function index()
-    {
-
-    }
-
     public function create()
     {
-        return view('saringan.create');
+        return view('SaringanJakim.create');
     }
 
     public function congratulation()
     {
-        return view('saringan.congratulation');
+        return view('SaringanJakim.congratulation');
     }
 
      public function store(Request $request)
@@ -34,19 +29,17 @@ class DetailSaringanController extends Controller
             'nationality' => 'required',
             'gender' => 'required',
             'birth_date' => 'required',
-            'passport_number' => 'required|unique:registrations,passport_number',
+            'passport_number' => 'required',
             'whatsapp_number' => 'required',
             'email' => 'required',
             'permanent_address' => 'required',
             'participation' => 'required',
-            // 'photo' => 'required', // Validate the cropped photo
-            // 'cropped_passport_image' => 'required' // Validate the cropped passport image
         ]);
 
         try {
-            // Create a new Saringan detail entry
             $saringanDetail = new DetailSaringan();
             $saringanDetail->type = 'International';
+            $saringanDetail->year = date('Y');
             $saringanDetail->category = $request->category;
             $saringanDetail->full_name = $request->full_name;
             $saringanDetail->country = $request->country;
@@ -54,6 +47,7 @@ class DetailSaringanController extends Controller
             $saringanDetail->gender = $request->gender;
             $saringanDetail->birth_date = $request->birth_date;
             $saringanDetail->passport_number = $request->passport_number;
+            $saringanDetail->country_code = $request->country_code;
             $saringanDetail->whatsapp_number = $request->whatsapp_number;
             $saringanDetail->email = $request->email;
             $saringanDetail->permanent_address = $request->permanent_address;
@@ -62,7 +56,6 @@ class DetailSaringanController extends Controller
             $saringanDetail->participation_year = $request->participation_year;
             $saringanDetail->ranking = $request->ranking;
 
-            // Process the cropped profile picture
             if ($request->has('photo')) {
                 $cropped_picture = $request->photo;
                 $cropped_pictureData = base64_decode(preg_replace('/^data:image\/\w+;base64,/', '', $cropped_picture));
@@ -82,26 +75,12 @@ class DetailSaringanController extends Controller
 
                 $saringanDetail->passport_image = url('storage/' . $cropped_passportPath); 
             }
-
-            // // Process the passport image if it exists
-            // if ($request->hasFile('passport_image')) {
-            //     $passport_image = $request->file('passport_image');
-            //     $passport_imageExtension = $passport_image->getClientOriginalExtension();
-
-            //     $passport_imageName = time() . '.' . $passport_imageExtension;
-            //     $passport_imagePath = $passport_image->storeAs('passportImages', $passport_imageName, 'public');
-
-            //     $saringanDetail->passport_image = url('storage/' . $passport_imagePath); 
-            // }
-
-            // dd($saringanDetail);
-
-            // Save the Saringan detail
+            
             $saringanDetail->save();
 
             return redirect()->route('saringan.congratulation')->with('success', 'Data saved successfully');
         } catch (\Exception $e) {
-            // Log any errors and return a failure message
+            
             Log::error($e->getMessage());
             return redirect()->route('saringan.create')->with('error', 'Data unable to save');
         }
@@ -112,12 +91,13 @@ class DetailSaringanController extends Controller
         $json = file_get_contents(public_path('json/CountryCodes.json'));
         return response()->json(json_decode($json));
 
-        // dd($json);
     }
 
     public function getExistingUserDetail()
     {
-        $existingUserDetail = DetailSaringan::select('passport_number', 'email', 'whatsapp_number')->get();
+        $existingUserDetail = DetailSaringan::select('passport_number', 'email', 'whatsapp_number', 'year')
+        ->where('year', date('Y'))
+        ->get();
         
         return response()->json($existingUserDetail);
     }

@@ -13,6 +13,7 @@ class DetailSaringan extends Model
 
     protected $fillable = [
         'type',
+        'year',
         'category',
         'country',
         'full_name',
@@ -20,7 +21,7 @@ class DetailSaringan extends Model
         'gender',
         'birth_date',
         'passport_number',
-        // 'country_code',
+        'country_code',
         'whatsapp_number',
         'email',
         'permanent_address',
