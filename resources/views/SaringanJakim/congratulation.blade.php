@@ -11,7 +11,7 @@
 
                     <div class="card-body">
                         <div class="alert alert-success" role="alert">
-                            <p>Congratulations! You have successfully registered for the <strong>64TH INTERNATIONAL ASSEMBLY MALAYSIA SCREENING SESSION</strong> event!</p>
+                            <p>Congratulations! You have successfully registered for the <strong>INTERNATIONAL ASSEMBLY MALAYSIA SCREENING SESSION</strong> event!</p>
                             <p>This is a wonderful achievement, and we commend your dedication and effort in securing your spot.</p>
                             <p>We are excited to have you join us for this prestigious event, where you will have the opportunity to connect with like-minded individuals, celebrate the beauty of the Quran, and experience a meaningful gathering of recitation and memorization.</p>
                             <p>Your participation is a significant step toward enriching your knowledge and sharing in this esteemed experience.</p>
@@ -26,18 +26,14 @@
             </div>
         </div>
     </div>
-
-    <!-- SweetAlert2 success pop-up -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            Swal.fire({
-                // title: 'Data Updated!',
-                text: 'You have successfully registered!',
-                icon: 'success',
-                confirmButtonColor: '#00C853',
-                confirmButtonText: 'OK'
-            });
-        });
-    </script>
 @endsection
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        Swal.fire({
+            text: 'You have successfully registered!',
+            icon: 'success',
+            confirmButtonColor: '#00C853',
+            confirmButtonText: 'OK'
+        });
+    });
+</script>

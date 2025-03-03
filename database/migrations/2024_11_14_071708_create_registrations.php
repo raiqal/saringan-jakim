@@ -34,6 +34,7 @@ return new class extends Migration
             $table->string('ranking')->nullable();
             $table->string('photo');
             $table->string('passport_image');
+            $table->string('file');
             $table->timestamps();
         });
     }

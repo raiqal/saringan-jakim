@@ -34,6 +34,9 @@ class DetailSaringanController extends Controller
             'email' => 'required',
             'permanent_address' => 'required',
             'participation' => 'required',
+            'photo' => 'required',
+            'passport_image' => 'required',
+            'file' => 'required|file|mimes:pdf,doc,docx',
         ]);
 
         try {
@@ -75,6 +78,17 @@ class DetailSaringanController extends Controller
 
                 $saringanDetail->passport_image = url('storage/' . $cropped_passportPath); 
             }
+
+            if ($request->has('file')) {
+                $file = $request->file('file');
+                $fileName = time() . '.' . $file->getClientOriginalExtension();
+                $filePath = 'files/' . $fileName;
+                Storage::disk('public')->put($filePath, file_get_contents($file));
+
+                $saringanDetail->file = url('storage/' . $filePath);
+            }
+
+            // dd($saringanDetail);
             
             $saringanDetail->save();
 

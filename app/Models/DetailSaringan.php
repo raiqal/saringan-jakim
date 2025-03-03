@@ -31,5 +31,6 @@ class DetailSaringan extends Model
         'ranking',
         'photo',
         'passport_image',
+        'file',
     ];
 }

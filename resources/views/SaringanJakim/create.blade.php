@@ -29,11 +29,10 @@
                     <div class="col-md-4">
                         <div class="card mb-4">
                             <div class="card-body">
-                                    <h5 class="card-title" >Photo</h5>
+                                <h5 class="card-title">Photo</h5>
                                 <div class="col-md-12">
                                     <input type="file" id="picture" class="form-control" aria-describedby="picture" required>
                                     <input type="hidden" name="photo" id="photo">
-
                                 </div>
                                 <br>
                                 <div class="row mb-3" id="showImage" style="display: none;">
@@ -44,7 +43,6 @@
                                         <a href="javascript:;" class="btn btn-primary mt-3" id="crop">Crop</a>
                                     </div>
                                 </div>
-
                                 <div class="row mb-3" id="showCroppedImage" style="display: none;">
                                     <div class="col-md-12 d-flex flex-column align-items-center">
                                         <div id="result_image" class="border p-3 d-inline-block">
@@ -54,15 +52,14 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="card">
+                    
+                        <div class="card mb-4">
                             <div class="card-body">
                                 <h5 class="card-title">Passport</h5>
                                 <div class="mb-3">
                                     <input type="file" id="edit-passport" class="form-control" aria-describedby="edit-passport" required>
                                     <input type="hidden" name="passport_image" id="passport_image">
                                 </div>
-
                                 <div class="row mb-3" id="showPassportImage" style="display: none;">
                                     <div class="col-md-12 d-flex flex-column align-items-center">
                                         <div id="passport-croppie" class="mt-2">
@@ -71,7 +68,6 @@
                                         <a href="javascript:;" class="btn btn-primary mt-3" id="cropPassport">Crop</a>
                                     </div>
                                 </div>
-
                                 <div class="row mb-3" id="showCroppedPassportImage" style="display: none;">
                                     <div class="col-md-12 d-flex flex-column align-items-center">
                                         <div id="passport-result_image" class="border p-3 d-inline-block">
@@ -81,8 +77,17 @@
                                 </div>
                             </div>
                         </div>
-                        <br>
+                    
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">File</h5>
+                                <div class="mb-3">
+                                    <input type="file" name="file" id="file" class="form-control" aria-describedby="file" required>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    
 
                     <div class="col-md-8">
                     <div class="card">
@@ -478,7 +483,7 @@
         editProfilePicture.addEventListener("change", function () {
             const file = this.files[0];
             if (!file || !validateImage(file)) {
-                this.value = ""; // Clear the file input
+                this.value = ""; 
                 return;
             }
 
@@ -514,7 +519,7 @@
         editPassportPicture.addEventListener("change", function () {
             const file = this.files[0];
             if (!file || !validateImage(file)) {
-                this.value = ""; // Clear the file input
+                this.value = ""; 
                 return;
             }
 
@@ -546,6 +551,45 @@
                 });
             }
         });
+
+        function validateFile(file){
+            const validFileTypes = ["application/pdf", 
+                           "application/msword", 
+                           "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
+            if (!validFileTypes.includes(file.type)) {
+                Swal.fire({
+                    title: "Invalid File",
+                    text: "Only PDF files are allowed.",
+                    icon: "error",
+                    confirmButtonColor: "#00C853",
+                    confirmButtonText: "Ok"
+                });
+                return false;
+            }
+            if (file.size > 5 * 1024 * 1024) {
+                Swal.fire({
+                    title: "File Too Large",
+                    text: "The uploaded file must not exceed 5MB.",
+                    icon: "error",
+                    confirmButtonColor: "#00C853",
+                    confirmButtonText: "Ok"
+                });
+                return false;
+            }
+            return true;
+        }
+
+        const fileInput = document.getElementById("file");
+        fileInput.addEventListener("change", function () {
+            const file = this.files[0];
+            if (!file || !validateFile(file)) {
+                this.value = ""; 
+                return;
+            }
+        });
+
+        
+        
     });
 </script>
 
