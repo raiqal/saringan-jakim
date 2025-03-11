@@ -21,6 +21,7 @@ class DetailSaringanController extends Controller
 
      public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'category' => 'required',
             'full_name' => 'required',
@@ -44,6 +45,13 @@ class DetailSaringanController extends Controller
             $saringanDetail->type = 'International';
             $saringanDetail->year = date('Y');
             $saringanDetail->category = $request->category;
+
+            if ($request->category == 'Recital') {
+                $saringanDetail->category_id = 66;
+            } else {
+                $saringanDetail->category_id = 67;
+            }
+
             $saringanDetail->full_name = $request->full_name;
             $saringanDetail->country = $request->country;
             $saringanDetail->nationality = $request->nationality;

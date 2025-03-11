@@ -507,42 +507,46 @@ $(document).ready(function() {
         var whatsappInput = $('#whatsapp_number').val().trim();
         var emailInput = $('#email').val().trim();
 
-        if (existingUserDetails.some(user => user.passport_number === passportInput)) {
-        Swal.fire({
-            title: 'Error',
-            text: 'This passport number already exists.',
-            icon: 'error',
-            confirmButtonColor: '#00C853',
-            confirmButtonText: 'Ok'
+        var sameCategoryUsers = existingUserDetails.filter(function(user) {
+            return user.category === selectedCategory;
         });
-        return;
-    }
 
-    var isDuplicateWhatsApp = existingUserDetails.some(user => 
-        user.country_code === countryCodeInput && user.whatsapp_number === whatsappInput
-    );
+        if (sameCategoryUsers.some(user => user.passport_number === passportInput)) {
+            Swal.fire({
+                title: 'Error',
+                text: 'This passport number already exists.',
+                icon: 'error',
+                confirmButtonColor: '#00C853',
+                confirmButtonText: 'Ok'
+            });
+            return;
+        }
 
-    if (isDuplicateWhatsApp) {
-        Swal.fire({
-            title: 'Error',
-            text: 'This WhatsApp number already exists.',
-            icon: 'error',
-            confirmButtonColor: '#00C853',
-            confirmButtonText: 'Ok'
-        });
-        return;
-    }
+        var isDuplicateWhatsApp = sameCategoryUsers.some(user => 
+            user.country_code === countryCodeInput && user.whatsapp_number === whatsappInput
+        );
 
-    if (existingUserDetails.some(user => user.email === emailInput)) {
-        Swal.fire({
-            title: 'Error',
-            text: 'This email is already registered.',
-            icon: 'error',
-            confirmButtonColor: '#00C853',
-            confirmButtonText: 'Ok'
-        });
-        return;
-    }
+        if (isDuplicateWhatsApp) {
+            Swal.fire({
+                title: 'Error',
+                text: 'This WhatsApp number already exists.',
+                icon: 'error',
+                confirmButtonColor: '#00C853',
+                confirmButtonText: 'Ok'
+            });
+            return;
+        }
+
+        if (sameCategoryUsers.some(user => user.email === emailInput)) {
+            Swal.fire({
+                title: 'Error',
+                text: 'This email is already registered.',
+                icon: 'error',
+                confirmButtonColor: '#00C853',
+                confirmButtonText: 'Ok'
+            });
+            return;
+        }
 
         Swal.fire({
             title: 'Are you sure?',

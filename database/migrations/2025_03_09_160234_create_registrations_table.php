@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('type');
             $table->string('year');
             $table->string('category');
+            $table->integer('category_id');
             $table->string('country');
             $table->string('full_name');
             $table->string('nationality');
