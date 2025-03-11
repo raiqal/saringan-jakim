@@ -3,18 +3,14 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
+    <title>Registration | International Assembly</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.min.css">
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-
-    @vite(['resources/js/app.js'])
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.css" />
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
 
     <style>
         body {
@@ -110,45 +106,41 @@
         }
 
     </style>
-    
+
+    @stack('styles')
 </head>
 <body>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    
     <div id="app">
         <header>
             REGISTRATION OF PARTICIPANT FOR 64TH INTERNATIONAL ASSEMBLY MALAYSIA SCREENING SESSION
         </header>
-            
+
         <main class="py-4">
             @yield('content')
         </main>
-        <footer style="background: linear-gradient(to right, red, darkred); color: yellow; padding: 20px; text-align: center;">
-            <div row>
-              <img src="{{ asset('images/LOGO_JAKIM.png') }}" alt="Logo" style="height: 50px; margin-bottom: 10px; margin-right: 20px;">
-              <img src="{{ asset('images/JATA_NEGARA.png') }}" alt="Logo" style="height: 50px; margin-bottom: 10px; margin-right: -10px;">
-              <p>Department of Islamic Development Malaysia (JAKIM)</p>
-              <p>Block A and B, Putrajaya Islamic Complex,</p>
-              <p>No.23, Jalan Tunku Abdul Rahman, Precinct 3,</p>
-              <p>62100 Putrajaya</p>              
-            </div>
+
+        <footer>
             <div>
-              <p>📞 03-8870 7000 | 📠 03-8870 7003</p>
-              <p>📧 <a href="mailto:mthqk@islam.gov.my" style="color: yellow;">mthqk@islam.gov.my</a></p>
+                <img src="{{ asset('images/LOGO_JAKIM.png') }}" alt="Logo" style="height: 50px; margin-right: 20px;">
+                <img src="{{ asset('images/JATA_NEGARA.png') }}" alt="Logo" style="height: 50px;">
+                <p>Department of Islamic Development Malaysia (JAKIM)</p>
+                <p>Block A and B, Putrajaya Islamic Complex,</p>
+                <p>No.23, Jalan Tunku Abdul Rahman, Precinct 3,</p>
+                <p>62100 Putrajaya</p>
+                <p>📞 03-8870 7000 | 📠 03-8870 7003</p>
+                <p>📧 <a href="mailto:mthqk@islam.gov.my">mthqk@islam.gov.my</a></p>
             </div>
-          </footer>    
+        </footer>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.5/croppie.min.js"></script>
+    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="https://kit.fontawesome.com/78618f83a2.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    @stack('scripts')
 </body>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/croppie/2.6.2/croppie.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
-
 </html>
-

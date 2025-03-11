@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\DetailSaringan;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
@@ -21,7 +21,6 @@ class DetailSaringanController extends Controller
 
      public function store(Request $request)
     {
-        // dd($request->all());
         $request->validate([
             'category' => 'required',
             'full_name' => 'required',
@@ -36,7 +35,8 @@ class DetailSaringanController extends Controller
             'participation' => 'required',
             'photo' => 'required',
             'passport_image' => 'required',
-            'file' => 'required|file|mimes:pdf,doc,docx',
+            'islamic_body_authority_file' => 'required|file|mimes:pdf,doc,docx',
+            'malawakil_file' => 'required|file|mimes:pdf,doc,docx',
         ]);
 
         try {
@@ -79,17 +79,24 @@ class DetailSaringanController extends Controller
                 $saringanDetail->passport_image = url('storage/' . $cropped_passportPath); 
             }
 
-            if ($request->has('file')) {
-                $file = $request->file('file');
+            if ($request->has('islamic_body_authority_file')) {
+                $file = $request->file('islamic_body_authority_file');
                 $fileName = time() . '.' . $file->getClientOriginalExtension();
-                $filePath = 'files/' . $fileName;
+                $filePath = 'islamic_body_authority_files/' . $fileName;
                 Storage::disk('public')->put($filePath, file_get_contents($file));
 
-                $saringanDetail->file = url('storage/' . $filePath);
+                $saringanDetail->islamic_body_authority_file = url('storage/' . $filePath);
             }
 
-            // dd($saringanDetail);
-            
+            if ($request->has('malawakil_file')) {
+                $file = $request->file('malawakil_file');
+                $fileName = time() . '.' . $file->getClientOriginalExtension();
+                $filePath = 'malawakil_files/' . $fileName;
+                Storage::disk('public')->put($filePath, file_get_contents($file));
+
+                $saringanDetail->malawakil_file = url('storage/' . $filePath);
+            }
+
             $saringanDetail->save();
 
             return redirect()->route('saringan.congratulation')->with('success', 'Data saved successfully');
@@ -109,8 +116,7 @@ class DetailSaringanController extends Controller
 
     public function getExistingUserDetail()
     {
-        $existingUserDetail = DetailSaringan::select('passport_number', 'email', 'whatsapp_number', 'year')
-        ->where('year', date('Y'))
+        $existingUserDetail = DetailSaringan::where('year', date('Y'))
         ->get();
         
         return response()->json($existingUserDetail);

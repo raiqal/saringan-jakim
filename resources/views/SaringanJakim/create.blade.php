@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container ">
   <div class="row justify-content-center">
@@ -32,8 +31,11 @@
                                 <h5 class="card-title">Photo</h5>
                                 <div class="col-md-12">
                                     <input type="file" id="picture" class="form-control" aria-describedby="picture" required>
+                                    <small style="font-size: 12px; font-weight: bold; color: black;">
+                                        <span style="color: red;">*</span> Only files in JPG, JPEG, or PNG format and file sizes below 5MB are allowed.
+                                    </small>
                                     <input type="hidden" name="photo" id="photo">
-                                </div>
+                                </div>                                
                                 <br>
                                 <div class="row mb-3" id="showImage" style="display: none;">
                                     <div class="col-md-12 d-flex flex-column align-items-center">
@@ -58,6 +60,9 @@
                                 <h5 class="card-title">Passport</h5>
                                 <div class="mb-3">
                                     <input type="file" id="edit-passport" class="form-control" aria-describedby="edit-passport" required>
+                                    <small style="font-size: 12px; font-weight: bold; color: black;">
+                                        <span style="color: red;">*</span> Only files in JPG, JPEG, or PNG format and file sizes below 5MB are allowed.
+                                    </small>
                                     <input type="hidden" name="passport_image" id="passport_image">
                                 </div>
                                 <div class="row mb-3" id="showPassportImage" style="display: none;">
@@ -78,11 +83,25 @@
                             </div>
                         </div>
                     
-                        <div class="card">
+                        <div class="card mb-4">
                             <div class="card-body">
-                                <h5 class="card-title">File</h5>
+                                <h5 class="card-title">File Islamic Body Authorities</h5>
                                 <div class="mb-3">
-                                    <input type="file" name="file" id="file" class="form-control" aria-describedby="file" required>
+                                    <input type="file" name="islamic_body_authority_file" id="islamic_body_authority_file" class="form-control" aria-describedby="file" required>
+                                    <small style="font-size: 12px; font-weight: bold; color: black;">
+                                        <span style="color: red;">*</span> Only files in JPG and file sizes below 5MB are allowed.
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">File Malawakil</h5>
+                                <div class="mb-3">
+                                    <input type="file" name="malawakil_file" id="malawakil_file" class="form-control" aria-describedby="file" required>
+                                    <small style="font-size: 12px; font-weight: bold; color: black;">
+                                        <span style="color: red;">*</span> Only files in JPG and file sizes below 5MB are allowed.
+                                    </small>
                                 </div>
                             </div>
                         </div>
@@ -125,7 +144,7 @@
                                     <label for="country">Represent Country</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <select class="sapik form-control custom-dropdown" name="country" id="country" required>
+                                    <select class="form-control custom-dropdown" name="country" id="country" required>
                                         <option value="" disabled selected>Select country</option>
                                     </select>
                                 </div>
@@ -155,10 +174,15 @@
                             
                             <div class="row mb-3 d-flex justify-content-start">
                                 <div class="col-4">
-                                    <label for="birth_date">Birth Date</label>
+                                    <label for="birth_date">Date of Birth</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="date" class="form-control" name="birth_date" id="birth_date" required>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="birth_date" id="birth_date" placeholder="mm-dd-yyyy" required>
+                                        <span class="input-group-text">
+                                            <i class="fas fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
 
@@ -176,8 +200,8 @@
                                     <label for="country_code">Whatsapp Number</label>
                                 </div>
                                 <div class="col-md-3">
-                                    <select class="form-control custom-dropdown" name="country_code" id="country_code" >
-                                        <option value="" disabled selected>Country code</option>
+                                    <select class="form-control custom-dropdown" name="country_code" id="country_code" required>
+                                        <option value="" disabled selected>Select code</option>
                                     </select>
                                 </div>
                                 <div class="col-md-5">
@@ -263,94 +287,112 @@
     </div>
   </div>
 @endsection
+@push('scripts')
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
+$(document).ready(function() {
 
-        let fields = ["full_name", "passport_number", "nationality", "permanent_address"];
-
-        fields.forEach(function(id) {
-            let inputField = document.getElementById(id);
-            if (inputField) {
-                inputField.addEventListener("input", function() {
-                    this.value = this.value.toUpperCase();
-                });
-            }
+    var fields = ["full_name", "passport_number", "nationality", "permanent_address","ranking"];
+    $.each(fields, function(i, id) {
+        $('#' + id).on('input', function() {
+            $(this).val($(this).val().toUpperCase());
         });
+    });
 
-        $('#country').select2({
-            placeholder: 'Select country',
-            allowClear: true,
-            width: '100%' 
-        });
+    $('#birth_date').datepicker({
+        format: 'dd-mm-yyyy',
+    });
 
-        $('#country_code').select2({
-            placeholder: 'Select country code',
-            allowClear: true,
-            width: '100%'
-        });
+    $('#birth_date').on('input', function () {
+        let value = $(this).val().replace(/\D/g, ""); 
 
-        $('#gender').select2({
-            placeholder: 'Select gender',
-            allowClear: true,
-            width: '100%'
-        });
+        if (value.length > 8) value = value.slice(0, 8);
 
-        $('#country_representation').select2({
-            placeholder: 'Select country',
-            allowClear: true,
-            width: '100%'
-        });
+        let day = value.slice(0, 2);
+        let month = value.slice(2, 4);
+        let year = value.slice(4, 8);
 
-        $('#participation_year').select2({
-            placeholder: 'Select year',
-            allowClear: true,
-            width: '100%'
-        });
+        if (month > 12) month = "12";
+        if (month < 1 && month.length === 2) month = "01";
 
-        fetch('/existing_user_detail')
-            .then(response => response.json())
-            .then(data => {
-                data.forEach(passportNumber => console.log(passportNumber));
-            })
-            .catch(error => console.error('Error fetching data:', error));
-        
-        fetch('/country_code')
-        .then(response => response.json())
-        .then(data => {
-            const countrySelect = $('#country');
-            const countryRepresentationSelect = $('#country_representation');
-            const countryCodeSelect = $('#country_code');
-            const whatsappNumberInput = document.getElementById('whatsapp_number');
+        if (day.length === 2) {
+            let maxDays = 31;
+            if (["04", "06", "09", "11"].includes(month)) maxDays = 30; 
+            if (month === "02") maxDays = 29; 
+            if (day > maxDays) day = maxDays.toString().padStart(2, '0');
+            if (day < 1) day = "01";
+        }
 
-            const countryCodes = data.reduce((acc, country) => {
-                acc[country.name] = country.dial_code;
-                return acc;
-            }, {});
+        let formatted = day;
+        if (value.length >= 3) formatted += "/" + month;
+        if (value.length >= 5) formatted += "/" + year;
 
-            data.sort((a, b) => a.name.localeCompare(b.name));
+        $(this).val(formatted);
+    });
 
-            data.forEach(({ name, dial_code, image }) => {
-                const countryOption = new Option(name, name);
+
+    $('#country').select2({
+        placeholder: 'Select country',
+        allowClear: true,
+        width: '100%'
+    });
+    $('#country_code').select2({
+        placeholder: 'Select code',
+        allowClear: true,
+    });
+    $('#gender').select2({
+        placeholder: 'Select gender',
+        allowClear: true,
+        width: '100%'
+    });
+    $('#country_representation').select2({
+        placeholder: 'Select country',
+        allowClear: true,
+        width: '100%'
+    });
+    $('#participation_year').select2({
+        placeholder: 'Select year',
+        allowClear: true,
+        width: '100%'
+    });
+
+    $.getJSON('/country_code')
+        .done(function(data) {
+            var countrySelect = $('#country');
+            var countryRepresentationSelect = $('#country_representation');
+            var countryCodeSelect = $('#country_code');
+            var whatsappNumberInput = $('#whatsapp_number');
+
+            var countryCodes = {};
+            $.each(data, function(i, country) {
+                countryCodes[country.name] = country.dial_code;
+            });
+
+            data.sort(function(a, b) {
+                return a.name.localeCompare(b.name);
+            });
+
+            $.each(data, function(i, country) {
+                var countryOption = new Option(country.name, country.name);
                 countrySelect.append(countryOption);
 
-                const codeOption = new Option(`${dial_code}`, dial_code);
-                $(codeOption).data('image', image); 
+                var codeOption = new Option(country.dial_code, country.dial_code);
+                $(codeOption).data('image', country.image);
                 countryCodeSelect.append(codeOption);
 
-                const representationOption = new Option(name, name);
+                var representationOption = new Option(country.name, country.name);
                 countryRepresentationSelect.append(representationOption);
             });
 
-            countrySelect.on('change', function () {
-                const selectedCountry = $(this).val();
-                const countryCode = countryCodes[selectedCountry];
+            countrySelect.on('change', function() {
+                var selectedCountry = $(this).val();
+                var countryCode = countryCodes[selectedCountry];
                 if (countryCode) {
                     $('#country_code').val(countryCode).trigger('change');
                 }
             });
 
-            $('#country_code').on('change', function () {
-                const selectedCountryCode = $(this).val();
+            $('#country_code').on('change', function() {
+                var selectedCountryCode = $(this).val();
             });
 
             countryCodeSelect.select2({
@@ -359,238 +401,317 @@
             });
 
             function formatFlagOption(option) {
-                if (!option.id) return option.text; 
-                const image = $(option.element).data('image'); 
+                if (!option.id) return option.text;
+                var image = $(option.element).data('image');
                 if (image) {
-                    return $(`<span><img src="${image}" style="width: 20px; height: 15px; margin-right: 10px;" />${option.text}</span>`);
+                    return $('<span><img src="' + image + '" style="width: 20px; height: 15px; margin-right: 10px;" />' + option.text + '</span>');
                 }
                 return option.text;
             }
         })
-        .catch(error => console.error('Error fetching countries:', error));
+        .fail(function(error) {
+            console.error('Error fetching countries:', error);
+        });
 
+    var participationYear = $('#participation_year');
+    var currentYear = new Date().getFullYear();
+    for (var year = currentYear; year >= 2000; year--) {
+        participationYear.append($('<option>', { value: year, text: year }));
+    }
 
+    var existingUserDetails = [];
+    $.getJSON('/existing_user_detail')
+        .done(function(data) {
+            existingUserDetails = data;
+        })
+        .fail(function(error) {
+            console.error('Error fetching user details:', error);
+        });
 
-        const participationYear = document.getElementById('participation_year');
-        const currentYear = new Date().getFullYear();
-        for (let year = currentYear; year >= 2000; year--) {
-            participationYear.add(new Option(year, year));
-        }
+    $('form').on('submit', function(event) {
+        event.preventDefault();
 
-        const form = document.querySelector('form');
-        form.addEventListener('submit', event => {
-            event.preventDefault();
+        var birthDateValue = $('#birth_date').val();
+        if (!birthDateValue) {
             Swal.fire({
-                title: 'Are you sure?',
-                icon: 'warning',
-                showCancelButton: true,
+                title: 'Error',
+                text: 'Please select a valid birth date.',
+                icon: 'error',
                 confirmButtonColor: '#00C853',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes'
-            }).then(result => {
-                if (result.isConfirmed) form.submit();
+                confirmButtonText: 'Ok'
             });
-        });
-
-        const additionalFields = document.getElementById('additional-fields');
-        document.getElementById('participation_yes').addEventListener('change', () => {
-            additionalFields.style.display = 'block';
-        });
-        document.getElementById('participation_no').addEventListener('change', () => {
-            additionalFields.style.display = 'none';
-        });
-
-        const whatsappInput = document.getElementById('whatsapp_number');
-        whatsappInput.addEventListener('input', function(event) {
-        let inputValue = event.target.value;
-
-        inputValue = inputValue.replace(/[^0-9+\s]/g, '');
-
-        event.target.value = inputValue;
-        });
-
-        let existingUserDetails = [];
-        fetch('/existing_user_detail')
-            .then(response => response.json())
-            .then(data => existingUserDetails = data)
-            .catch(error => console.error('Error fetching user details:', error));
-
-        form.addEventListener('submit', event => {
-            const passportInput = document.getElementById('passport_number').value.trim();
-            const emailInput = document.getElementById('email').value.trim();
-            const whatsappInput = document.getElementById('whatsapp_number').value.trim();
-
-            const duplicateCheck = [
-                { field: 'passport_number', value: passportInput, message: 'This passport number already exists.' },
-                { field: 'email', value: emailInput, message: 'This email is already registered.' },
-                { field: 'whatsapp_number', value: whatsappInput, message: 'This WhatsApp number is already registered.' }
-            ];
-
-            for (const { field, value, message } of duplicateCheck) {
-                if (existingUserDetails.find(user => user[field] === value)) {
-                    event.preventDefault();
-                    Swal.fire({
-                        title: 'Error',
-                        text: message,
-                        icon: 'error',
-                        confirmButtonColor: '#00C853',
-                        confirmButtonText: 'Ok'
-                    });
-                    return;
-                }
-            }
-        });
-
-        let profileCroppieInstance, passportCroppieInstance;
-
-        const editProfilePicture = document.getElementById("picture");
-        const showImage = document.getElementById("showImage");
-        const cropButton = document.getElementById("crop");
-        const showCroppedImage = document.getElementById("showCroppedImage");
-        const resultImage = document.getElementById("result_image");
-
-        const editPassportPicture = document.getElementById("edit-passport");
-        const showPassportImage = document.getElementById("showPassportImage");
-        const cropPassportButton = document.getElementById("cropPassport");
-        const showCroppedPassportImage = document.getElementById("showCroppedPassportImage");
-        const passportResultImage = document.getElementById("passport-result_image");
-
-        function validateImage(file) {
-            const validImageTypes = ["image/jpeg", "image/png", "image/jpg"];
-            if (!validImageTypes.includes(file.type)) {
-                Swal.fire({
-                    title: "Invalid File",
-                    text: "Only JPG, JPEG, and PNG images are allowed.",
-                    icon: "error",
-                    confirmButtonColor: "#00C853",
-                    confirmButtonText: "Ok"
-                });
-                return false;
-            }
-            if (file.size > 5 * 1024 * 1024) {
-                Swal.fire({
-                    title: "File Too Large",
-                    text: "The uploaded file must not exceed 5MB.",
-                    icon: "error",
-                    confirmButtonColor: "#00C853",
-                    confirmButtonText: "Ok"
-                });
-                return false;
-            }
-            return true;
+            return;
         }
 
-        editProfilePicture.addEventListener("change", function () {
-            const file = this.files[0];
-            if (!file || !validateImage(file)) {
-                this.value = ""; 
-                return;
-            }
+        var parts = birthDateValue.split('-');
+        var birthDate = new Date(parts[2], parts[1] - 1, parts[0]); // Year, Month (0-indexed), Day
 
-            showCroppedImage.style.display = "none";
-            resultImage.innerHTML = "";
-            showImage.style.display = "none";
-            if (profileCroppieInstance) profileCroppieInstance.destroy();
+        var today = new Date();
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var monthDiff = today.getMonth() - birthDate.getMonth();
 
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const croppieElement = document.getElementById("croppie");
-                profileCroppieInstance = new Croppie(croppieElement, {
-                    boundary: { width: 300, height: 300 },
-                    viewport: { width: 300, height: 300, type: "square" },
-                });
-                profileCroppieInstance.bind({ url: e.target.result });
-                showImage.style.display = "block";
-            };
-            reader.readAsDataURL(file);
-        });
-
-        cropButton.addEventListener("click", function () {
-            if (profileCroppieInstance) {
-                profileCroppieInstance.result({ type: "base64" }).then(function (dataImg) {
-                    resultImage.innerHTML = `<img src="${dataImg}" class="img-fluid" />`;
-                    showImage.style.display = "none";
-                    showCroppedImage.style.display = "block";
-                    document.getElementById('photo').value = dataImg;
-                });
-            }
-        });
-
-        editPassportPicture.addEventListener("change", function () {
-            const file = this.files[0];
-            if (!file || !validateImage(file)) {
-                this.value = ""; 
-                return;
-            }
-
-            showCroppedPassportImage.style.display = "none";
-            passportResultImage.innerHTML = "";
-            showPassportImage.style.display = "none";
-            if (passportCroppieInstance) passportCroppieInstance.destroy();
-
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                const croppieElement = document.getElementById("passport-croppie");
-                passportCroppieInstance = new Croppie(croppieElement, {
-                    boundary: { width: 300, height: 300 },
-                    viewport: { width: 300, height: 300, type: "square" },
-                });
-                passportCroppieInstance.bind({ url: e.target.result });
-                showPassportImage.style.display = "block";
-            };
-            reader.readAsDataURL(file);
-        });
-
-        cropPassportButton.addEventListener("click", function () {
-            if (passportCroppieInstance) {
-                passportCroppieInstance.result({ type: "base64" }).then(function (passportImg) {
-                    passportResultImage.innerHTML = `<img src="${passportImg}" class="img-fluid" />`;
-                    showPassportImage.style.display = "none";
-                    showCroppedPassportImage.style.display = "block";
-                    document.getElementById('passport_image').value = passportImg;
-                });
-            }
-        });
-
-        function validateFile(file){
-            const validFileTypes = ["application/pdf", 
-                           "application/msword", 
-                           "application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
-            if (!validFileTypes.includes(file.type)) {
-                Swal.fire({
-                    title: "Invalid File",
-                    text: "Only PDF files are allowed.",
-                    icon: "error",
-                    confirmButtonColor: "#00C853",
-                    confirmButtonText: "Ok"
-                });
-                return false;
-            }
-            if (file.size > 5 * 1024 * 1024) {
-                Swal.fire({
-                    title: "File Too Large",
-                    text: "The uploaded file must not exceed 5MB.",
-                    icon: "error",
-                    confirmButtonColor: "#00C853",
-                    confirmButtonText: "Ok"
-                });
-                return false;
-            }
-            return true;
+        if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
         }
 
-        const fileInput = document.getElementById("file");
-        fileInput.addEventListener("change", function () {
-            const file = this.files[0];
-            if (!file || !validateFile(file)) {
-                this.value = ""; 
+        // Age limit check
+        var selectedCategory = $('input[name="category"]:checked').val();
+        if (selectedCategory === 'Recital') { 
+            if (age < 18) {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Sorry, under the age limit.',
+                    icon: 'error',
+                    confirmButtonColor: '#00C853',
+                    confirmButtonText: 'Ok'
+                });
+                return;
+            } else if (age >= 50) { 
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Sorry, over the age limit.',
+                    icon: 'error',
+                    confirmButtonColor: '#00C853',
+                    confirmButtonText: 'Ok'
+                });
                 return;
             }
+        } else if (selectedCategory === 'Memorisation') {
+            if (age < 13) {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Sorry, under the age limit.',
+                    icon: 'error',
+                    confirmButtonColor: '#00C853',
+                    confirmButtonText: 'Ok'
+                });
+                return;
+            } else if (age >= 25) {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Sorry, over the age limit.',
+                    icon: 'error',
+                    confirmButtonColor: '#00C853',
+                    confirmButtonText: 'Ok'
+                });
+                return;
+            }
+        }
+
+        var passportInput = $('#passport_number').val().trim();
+        var countryCodeInput = $('#country_code').val().trim(); 
+        var whatsappInput = $('#whatsapp_number').val().trim();
+        var emailInput = $('#email').val().trim();
+
+        var sameCategoryUsers = existingUserDetails.filter(function(user) {
+            return user.category === selectedCategory;
         });
 
-        
-        
+        if (sameCategoryUsers.some(user => user.passport_number === passportInput)) {
+            Swal.fire({
+                title: 'Error',
+                text: 'This passport number already exists.',
+                icon: 'error',
+                confirmButtonColor: '#00C853',
+                confirmButtonText: 'Ok'
+            });
+            return;
+        }
+
+        var isDuplicateWhatsApp = sameCategoryUsers.some(user => 
+            user.country_code === countryCodeInput && user.whatsapp_number === whatsappInput
+        );
+
+        if (isDuplicateWhatsApp) {
+            Swal.fire({
+                title: 'Error',
+                text: 'This WhatsApp number already exists.',
+                icon: 'error',
+                confirmButtonColor: '#00C853',
+                confirmButtonText: 'Ok'
+            });
+            return;
+        }
+
+        if (sameCategoryUsers.some(user => user.email === emailInput)) {
+            Swal.fire({
+                title: 'Error',
+                text: 'This email is already registered.',
+                icon: 'error',
+                confirmButtonColor: '#00C853',
+                confirmButtonText: 'Ok'
+            });
+            return;
+        }
+
+        Swal.fire({
+            title: 'Are you sure?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#00C853',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes'
+        }).then(function(result) {
+            if (result.isConfirmed) {
+                event.currentTarget.submit();
+            }
+        });
     });
+
+
+    $('#participation_yes').on('change', function() {
+        $('#additional-fields').show();
+    });
+    $('#participation_no').on('change', function() {
+        $('#additional-fields').hide();
+    });
+
+    $('#whatsapp_number').on('input', function() {
+        var inputValue = $(this).val();
+        inputValue = inputValue.replace(/[^0-9+\s]/g, '');
+        $(this).val(inputValue);
+    });
+
+    var profileCroppieInstance, passportCroppieInstance;
+    var editProfilePicture = $('#picture');
+    var showImage = $('#showImage');
+    var cropButton = $('#crop');
+    var showCroppedImage = $('#showCroppedImage');
+    var resultImage = $('#result_image');
+
+    var editPassportPicture = $('#edit-passport');
+    var showPassportImage = $('#showPassportImage');
+    var cropPassportButton = $('#cropPassport');
+    var showCroppedPassportImage = $('#showCroppedPassportImage');
+    var passportResultImage = $('#passport-result_image');
+
+    function validateImage(file) {
+        var validImageTypes = ["image/jpeg", "image/png", "image/jpg"];
+        if ($.inArray(file.type, validImageTypes) === -1) {
+            Swal.fire({
+                title: "Invalid File",
+                text: "Only JPG, JPEG, and PNG images are allowed.",
+                icon: "error",
+                confirmButtonColor: "#00C853",
+                confirmButtonText: "Ok"
+            });
+            return false;
+        }
+        if (file.size > 5 * 1024 * 1024) {
+            Swal.fire({
+                title: "File Too Large",
+                text: "The uploaded file must not exceed 5MB.",
+                icon: "error",
+                confirmButtonColor: "#00C853",
+                confirmButtonText: "Ok"
+            });
+            return false;
+        }
+        return true;
+    }
+
+    editProfilePicture.on('change', function() {
+        var file = this.files[0];
+        if (!file || !validateImage(file)) {
+            $(this).val('');
+            return;
+        }
+        showCroppedImage.hide();
+        resultImage.html('');
+        showImage.hide();
+        if (profileCroppieInstance) { profileCroppieInstance.destroy(); }
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var croppieElement = $('#croppie')[0];
+            profileCroppieInstance = new Croppie(croppieElement, {
+                boundary: { width: 300, height: 300 },
+                viewport: { width: 300, height: 300, type: "square" }
+            });
+            profileCroppieInstance.bind({ url: e.target.result });
+            showImage.show();
+        };
+        reader.readAsDataURL(file);
+    });
+
+    cropButton.on('click', function() {
+        if (profileCroppieInstance) {
+            profileCroppieInstance.result({ type: "base64" }).then(function(dataImg) {
+                resultImage.html('<img src="' + dataImg + '" class="img-fluid" />');
+                showImage.hide();
+                showCroppedImage.show();
+                $('#photo').val(dataImg);
+            });
+        }
+    });
+
+    editPassportPicture.on('change', function() {
+        var file = this.files[0];
+        if (!file || !validateImage(file)) {
+            $(this).val('');
+            return;
+        }
+        showCroppedPassportImage.hide();
+        passportResultImage.html('');
+        showPassportImage.hide();
+        if (passportCroppieInstance) { passportCroppieInstance.destroy(); }
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var croppieElement = $('#passport-croppie')[0];
+            passportCroppieInstance = new Croppie(croppieElement, {
+                boundary: { width: 300, height: 300 },
+                viewport: { width: 300, height: 300, type: "square" }
+            });
+            passportCroppieInstance.bind({ url: e.target.result });
+            showPassportImage.show();
+        };
+        reader.readAsDataURL(file);
+    });
+
+    cropPassportButton.on('click', function() {
+        if (passportCroppieInstance) {
+            passportCroppieInstance.result({ type: "base64" }).then(function(passportImg) {
+                passportResultImage.html('<img src="' + passportImg + '" class="img-fluid" />');
+                showPassportImage.hide();
+                showCroppedPassportImage.show();
+                $('#passport_image').val(passportImg);
+            });
+        }
+    });
+
+    function validateFile(file) {
+        var validFileTypes = ["application/pdf"];
+        if ($.inArray(file.type, validFileTypes) === -1) {
+            Swal.fire({
+                title: "Invalid File",
+                text: "Only PDF files are allowed.",
+                icon: "error",
+                confirmButtonColor: "#00C853",
+                confirmButtonText: "Ok"
+            });
+            return false;
+        }
+        if (file.size > 5 * 1024 * 1024) {
+            Swal.fire({
+                title: "File Too Large",
+                text: "The uploaded file must not exceed 5MB.",
+                icon: "error",
+                confirmButtonColor: "#00C853",
+                confirmButtonText: "Ok"
+            });
+            return false;
+        }
+        return true;
+    }
+
+    $('#islamic_body_authority_file, #malawakil_file').on('change', function() {
+        var file = this.files[0];
+        if (!file || !validateFile(file)) {
+            $(this).val('');
+            return;
+        }
+    });
+
+});
 </script>
 
-
+@endpush

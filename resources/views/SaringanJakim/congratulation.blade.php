@@ -30,10 +30,10 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         Swal.fire({
-            text: 'You have successfully registered!',
+            title: 'Success!',
+            text: 'Congratulations, registration is successful and is in process.',
             icon: 'success',
-            confirmButtonColor: '#00C853',
-            confirmButtonText: 'OK'
+            confirmButtonColor: '#00C853'
         });
     });
 </script>
