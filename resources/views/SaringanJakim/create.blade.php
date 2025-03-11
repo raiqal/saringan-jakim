@@ -183,7 +183,7 @@
                                     </div>
                                     <div class="col-md-8">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" name="birth_date" id="birth_date" placeholder="mm-dd-yyyy" required>
+                                            <input type="text" class="form-control" name="birth_date" id="birth_date" placeholder="dd-mm-yyyy" required>
                                             <span class="input-group-text">
                                                 <i class="fas fa-calendar-alt"></i>
                                             </span>

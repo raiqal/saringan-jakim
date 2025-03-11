@@ -21,7 +21,6 @@ class DetailSaringanController extends Controller
 
      public function store(Request $request)
     {
-        // dd($request->all());
         $request->validate([
             'category' => 'required',
             'full_name' => 'required',

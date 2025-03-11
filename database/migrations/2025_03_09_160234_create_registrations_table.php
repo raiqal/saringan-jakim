@@ -38,6 +38,7 @@ return new class extends Migration
             $table->string('islamic_body_authority_file');
             $table->string('malawakil_file');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
