@@ -82,174 +82,74 @@
                                 </div>
                             </div>
                         </div>
-                    
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h5 class="card-title">File Islamic Body Authorities</h5>
-                                <div class="mb-3">
-                                    <input type="file" name="islamic_body_authority_file" id="islamic_body_authority_file" class="form-control" aria-describedby="file" required>
-                                    <small style="font-size: 12px; font-weight: bold; color: black;">
-                                        <span style="color: red;">*</span> Only files in JPG and file sizes below 5MB are allowed.
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h5 class="card-title">File Malawakil</h5>
-                                <div class="mb-3">
-                                    <input type="file" name="malawakil_file" id="malawakil_file" class="form-control" aria-describedby="file" required>
-                                    <small style="font-size: 12px; font-weight: bold; color: black;">
-                                        <span style="color: red;">*</span> Only files in JPG and file sizes below 5MB are allowed.
-                                    </small>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     
 
                     <div class="col-md-8">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Other</h5>
-                            <br>
-                            <div class="row mb-3 d-flex justify-content-start">
-                                <div class="col-4">
-                                    <div class="col-md-6">
-                                        <label for="category">Category</label>
-                                    </div>
-                                </div>
-                                <div class="col-8">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="category" id="category_recital" value="Recital" required>
-                                        <label class="form-check-label" for="category_recital">Recital</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="category" id="category_memorisation" value="Memorisation" required>
-                                        <label class="form-check-label" for="category_memorisation">Memorisation</label>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">File Islamic Body Authorities</h5>
+                                        <div class="mb-3">
+                                            <input type="file" name="islamic_body_authority_file" id="islamic_body_authority_file" class="form-control" aria-describedby="file" required>
+                                            <small style="font-size: 12px; font-weight: bold; color: black;">
+                                                <span style="color: red;">*</span> Only files in JPG and file sizes below 5MB are allowed.
+                                            </small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="row mb-3 d-flex justify-content-start">
-                                <div class="col-4">
-                                        <label for="full_name">Full Name</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" name="full_name" id="full_name" placeholder="Full Name" required>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3 d-flex justify-content-start">
-                                <div class="col-4">
-                                    <label for="country">Represent Country</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <select class="form-control custom-dropdown" name="country" id="country" required>
-                                        <option value="" disabled selected>Select country</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3 d-flex justify-content-start">
-                                <div class="col-4">
-                                    <label for="nationality">Nationality</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" name="nationality" id="nationality" placeholder="Nationality" required>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3 d-flex justify-content-start">
-                                <div class="col-4">
-                                    <label for="gender">Gender</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <select class="form-control custom-dropdown" name="gender" id="gender" required>
-                                        <option value="" disabled selected></option>
-                                        <option value="Male">Male</option>
-                                        <option value="Female">Female</option>
-                                    </select>
-                                </div>
-                            </div>
-                            
-                            <div class="row mb-3 d-flex justify-content-start">
-                                <div class="col-4">
-                                    <label for="birth_date">Date of Birth</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" name="birth_date" id="birth_date" placeholder="mm-dd-yyyy" required>
-                                        <span class="input-group-text">
-                                            <i class="fas fa-calendar-alt"></i>
-                                        </span>
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">File Malawakil</h5>
+                                        <div class="mb-3">
+                                            <input type="file" name="malawakil_file" id="malawakil_file" class="form-control" aria-describedby="file" required>
+                                            <small style="font-size: 12px; font-weight: bold; color: black;">
+                                                <span style="color: red;">*</span> Only files in JPG and file sizes below 5MB are allowed.
+                                            </small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row mb-3 d-flex justify-content-start">
-                                <div class="col-4">
-                                    <label for="passport_number">Passport Number</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" name="passport_number" id="passport_number" placeholder="Passport Number" required>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3 d-flex justify-content-start">
-                                <div class="col-4">
-                                    <label for="country_code">Whatsapp Number</label>
-                                </div>
-                                <div class="col-md-3">
-                                    <select class="form-control custom-dropdown" name="country_code" id="country_code" required>
-                                        <option value="" disabled selected>Select code</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-5">
-                                    <input type="text" class="form-control" name="whatsapp_number" id="whatsapp_number" placeholder="Whatsapp Number" required>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3 d-flex justify-content-start">
-                                <div class="col-4">
-                                    <label for="email">Email</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3 d-flex justify-content-start">
-                                <div class="col-4">
-                                    <label for="permanent_address">Permanent Address</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" name="permanent_address" id="permanent_address" placeholder="Permanent Address" required>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3 d-flex justify-content-start">
-                                <div class="col-4">
-                                    <label for="participation">Have you ever participated in this event?</label>
-                                </div>
-                                <div class="col-8">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="participation" id="participation_yes" value="Yes" required>
-                                        <label class="form-check-label" for="participation_yes">Yes</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="participation" id="participation_no" value="No" required>
-                                        <label class="form-check-label" for="participation_no">No</label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div id="additional-fields" style="display: none;">
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Other</h5>
+                                <br>
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
-                                        <label for="country_representation">Country Representation</label>
+                                        <div class="col-md-6">
+                                            <label for="category">Category</label>
+                                        </div>
                                     </div>
                                     <div class="col-8">
-                                        <select class="form-control custom-dropdown" name="country_representation" id="country_representation">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="category" id="category_recital" value="Recital" required>
+                                            <label class="form-check-label" for="category_recital">Recital</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="category" id="category_memorisation" value="Memorisation" required>
+                                            <label class="form-check-label" for="category_memorisation">Memorisation</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 d-flex justify-content-start">
+                                    <div class="col-4">
+                                            <label for="full_name">Full Name</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" name="full_name" id="full_name" placeholder="Full Name" required>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 d-flex justify-content-start">
+                                    <div class="col-4">
+                                        <label for="country">Represent Country</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <select class="form-control custom-dropdown" name="country" id="country" required>
                                             <option value="" disabled selected>Select country</option>
                                         </select>
                                     </div>
@@ -257,26 +157,131 @@
 
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
-                                        <label for="participation_year">Participation Year</label>
+                                        <label for="nationality">Nationality</label>
                                     </div>
-                                    <div class="col-8">
-                                        <select class="form-control" name="participation_year" id="participation_year">
-                                            <option value="">Select year</option>
-                                        </select>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" name="nationality" id="nationality" placeholder="Nationality" required>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
-                                        <label for="ranking">Ranking</label>
+                                        <label for="gender">Gender</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <select class="form-control custom-dropdown" name="gender" id="gender" required>
+                                            <option value="" disabled selected></option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="row mb-3 d-flex justify-content-start">
+                                    <div class="col-4">
+                                        <label for="birth_date">Date of Birth</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" name="birth_date" id="birth_date" placeholder="mm-dd-yyyy" required>
+                                            <span class="input-group-text">
+                                                <i class="fas fa-calendar-alt"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 d-flex justify-content-start">
+                                    <div class="col-4">
+                                        <label for="passport_number">Passport Number</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" name="passport_number" id="passport_number" placeholder="Passport Number" required>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 d-flex justify-content-start">
+                                    <div class="col-4">
+                                        <label for="country_code">Whatsapp Number</label>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <select class="form-control custom-dropdown" name="country_code" id="country_code" required>
+                                            <option value="" disabled selected>Select code</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <input type="text" class="form-control" name="whatsapp_number" id="whatsapp_number" placeholder="Whatsapp Number" required>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 d-flex justify-content-start">
+                                    <div class="col-4">
+                                        <label for="email">Email</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 d-flex justify-content-start">
+                                    <div class="col-4">
+                                        <label for="permanent_address">Permanent Address</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" name="permanent_address" id="permanent_address" placeholder="Permanent Address" required>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3 d-flex justify-content-start">
+                                    <div class="col-4">
+                                        <label for="participation">Have you ever participated in this event?</label>
                                     </div>
                                     <div class="col-8">
-                                        <input type="text" class="form-control" name="ranking" id="ranking" placeholder="Ranking" >
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="participation" id="participation_yes" value="Yes" required>
+                                            <label class="form-check-label" for="participation_yes">Yes</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="participation" id="participation_no" value="No" required>
+                                            <label class="form-check-label" for="participation_no">No</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="additional-fields" style="display: none;">
+                                    <div class="row mb-3 d-flex justify-content-start">
+                                        <div class="col-4">
+                                            <label for="country_representation">Country Representation</label>
+                                        </div>
+                                        <div class="col-8">
+                                            <select class="form-control custom-dropdown" name="country_representation" id="country_representation">
+                                                <option value="" disabled selected>Select country</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 d-flex justify-content-start">
+                                        <div class="col-4">
+                                            <label for="participation_year">Participation Year</label>
+                                        </div>
+                                        <div class="col-8">
+                                            <select class="form-control" name="participation_year" id="participation_year">
+                                                <option value="">Select year</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3 d-flex justify-content-start">
+                                        <div class="col-4">
+                                            <label for="ranking">Ranking</label>
+                                        </div>
+                                        <div class="col-8">
+                                            <input type="text" class="form-control" name="ranking" id="ranking" placeholder="Ranking" >
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     </div>
                 </div>
                 <div class="text-end">
