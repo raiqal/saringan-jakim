@@ -449,7 +449,7 @@ $(document).ready(function() {
         }
 
         var parts = birthDateValue.split('-');
-        var birthDate = new Date(parts[2], parts[1] - 1, parts[0]); // Year, Month (0-indexed), Day
+        var birthDate = new Date(parts[2], parts[1] - 1, parts[0]); 
 
         var today = new Date();
         var age = today.getFullYear() - birthDate.getFullYear();
@@ -459,7 +459,6 @@ $(document).ready(function() {
             age--;
         }
 
-        // Age limit check
         var selectedCategory = $('input[name="category"]:checked').val();
         if (selectedCategory === 'Recital') { 
             if (age < 18) {
@@ -508,46 +507,42 @@ $(document).ready(function() {
         var whatsappInput = $('#whatsapp_number').val().trim();
         var emailInput = $('#email').val().trim();
 
-        var sameCategoryUsers = existingUserDetails.filter(function(user) {
-            return user.category === selectedCategory;
+        if (existingUserDetails.some(user => user.passport_number === passportInput)) {
+        Swal.fire({
+            title: 'Error',
+            text: 'This passport number already exists.',
+            icon: 'error',
+            confirmButtonColor: '#00C853',
+            confirmButtonText: 'Ok'
         });
+        return;
+    }
 
-        if (sameCategoryUsers.some(user => user.passport_number === passportInput)) {
-            Swal.fire({
-                title: 'Error',
-                text: 'This passport number already exists.',
-                icon: 'error',
-                confirmButtonColor: '#00C853',
-                confirmButtonText: 'Ok'
-            });
-            return;
-        }
+    var isDuplicateWhatsApp = existingUserDetails.some(user => 
+        user.country_code === countryCodeInput && user.whatsapp_number === whatsappInput
+    );
 
-        var isDuplicateWhatsApp = sameCategoryUsers.some(user => 
-            user.country_code === countryCodeInput && user.whatsapp_number === whatsappInput
-        );
+    if (isDuplicateWhatsApp) {
+        Swal.fire({
+            title: 'Error',
+            text: 'This WhatsApp number already exists.',
+            icon: 'error',
+            confirmButtonColor: '#00C853',
+            confirmButtonText: 'Ok'
+        });
+        return;
+    }
 
-        if (isDuplicateWhatsApp) {
-            Swal.fire({
-                title: 'Error',
-                text: 'This WhatsApp number already exists.',
-                icon: 'error',
-                confirmButtonColor: '#00C853',
-                confirmButtonText: 'Ok'
-            });
-            return;
-        }
-
-        if (sameCategoryUsers.some(user => user.email === emailInput)) {
-            Swal.fire({
-                title: 'Error',
-                text: 'This email is already registered.',
-                icon: 'error',
-                confirmButtonColor: '#00C853',
-                confirmButtonText: 'Ok'
-            });
-            return;
-        }
+    if (existingUserDetails.some(user => user.email === emailInput)) {
+        Swal.fire({
+            title: 'Error',
+            text: 'This email is already registered.',
+            icon: 'error',
+            confirmButtonColor: '#00C853',
+            confirmButtonText: 'Ok'
+        });
+        return;
+    }
 
         Swal.fire({
             title: 'Are you sure?',
