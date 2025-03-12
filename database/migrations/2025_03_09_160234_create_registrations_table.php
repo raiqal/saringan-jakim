@@ -15,30 +15,32 @@ return new class extends Migration
     {
         Schema::create('registrations', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
-            $table->string('year');
-            $table->string('category');
-            $table->integer('category_id');
-            $table->string('country');
-            $table->string('full_name');
-            $table->string('nationality');
-            $table->string('gender');
-            $table->string('birth_date');
-            $table->string('passport_number');
-            $table->string('country_code');
-            $table->string('whatsapp_number');
-            $table->string('email');
-            $table->string('permanent_address');
-            $table->string('participation');
-            $table->string('country_representation')->nullable();
-            $table->integer('participation_year')->nullable();
-            $table->string('ranking')->nullable();
-            $table->string('photo');
-            $table->string('passport_image');
-            $table->string('islamic_body_authority_file');
+            $table->string('type', 15);
+            $table->year('year'); 
+            $table->string('category', 15);
+            $table->unsignedBigInteger('category_id'); 
+            $table->unsignedBigInteger('contestant_id')->nullable(); 
+            $table->string('country', 100); 
+            $table->string('full_name', 100);
+            $table->string('nationality', 100);
+            $table->string('gender', 10);
+            $table->date('birth_date'); 
+            $table->string('passport_number', 100);
+            $table->string('country_code', 15); 
+            $table->string('whatsapp_number', 20);
+            $table->string('email', 100); 
+            $table->text('permanent_address'); 
+            $table->string('participation', 100);
+            $table->string('country_representation', 100)->nullable();
+            $table->year('participation_year')->nullable(); 
+            $table->string('ranking', 100)->nullable(); 
+            $table->string('photo'); 
+            $table->string('passport_image'); 
+            $table->string('islamic_body_authority_file'); 
             $table->string('malawakil_file');
             $table->timestamps();
             $table->softDeletes();
+            
         });
     }
 

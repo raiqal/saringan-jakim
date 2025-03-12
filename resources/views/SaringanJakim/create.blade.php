@@ -23,7 +23,7 @@
                       </div>
                   @endif
             <form  method="POST" action="{{ route('saringan.store') }}" enctype="multipart/form-data"> 
-              @csrf
+            @csrf
                 <div class="row mb-4">
                     <div class="col-md-4">
                         <div class="card mb-4">
@@ -94,7 +94,7 @@
                                         <div class="mb-3">
                                             <input type="file" name="islamic_body_authority_file" id="islamic_body_authority_file" class="form-control" aria-describedby="file" required>
                                             <small style="font-size: 12px; font-weight: bold; color: black;">
-                                                <span style="color: red;">*</span> Only files in JPG and file sizes below 5MB are allowed.
+                                                <span style="color: red;">*</span> Only files in PDF and file sizes below 5MB are allowed.
                                             </small>
                                         </div>
                                     </div>
@@ -107,7 +107,7 @@
                                         <div class="mb-3">
                                             <input type="file" name="malawakil_file" id="malawakil_file" class="form-control" aria-describedby="file" required>
                                             <small style="font-size: 12px; font-weight: bold; color: black;">
-                                                <span style="color: red;">*</span> Only files in JPG and file sizes below 5MB are allowed.
+                                                <span style="color: red;">*</span> Only files in PDF and file sizes below 5MB are allowed.
                                             </small>
                                         </div>
                                     </div>
@@ -121,23 +121,23 @@
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
                                         <div class="col-md-6">
-                                            <label for="category">Category</label>
+                                            <label for="category">Category <span style="color: red;">*</span></label>
                                         </div>
                                     </div>
                                     <div class="col-8">
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="category" id="category_recital" value="Recital" required>
+                                            <input class="form-check-input" type="checkbox" name="category[]" id="category_recital" value="Recital">
                                             <label class="form-check-label" for="category_recital">Recital</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" name="category" id="category_memorisation" value="Memorisation" required>
+                                            <input class="form-check-input" type="checkbox" name="category[]" id="category_memorisation" value="Memorisation">
                                             <label class="form-check-label" for="category_memorisation">Memorisation</label>
                                         </div>
                                     </div>
-                                </div>
+                                </div>                                
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
-                                            <label for="full_name">Full Name</label>
+                                            <label for="full_name">Full Name <span style="color: red;">*</span></label>
                                     </div>
                                     <div class="col-md-8">
                                         <input type="text" class="form-control" name="full_name" id="full_name" placeholder="Full Name" required>
@@ -146,7 +146,7 @@
 
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
-                                        <label for="country">Represent Country</label>
+                                        <label for="country">Represent Country <span style="color: red;">*</span></label>
                                     </div>
                                     <div class="col-md-8">
                                         <select class="form-control custom-dropdown" name="country" id="country" required>
@@ -157,7 +157,7 @@
 
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
-                                        <label for="nationality">Nationality</label>
+                                        <label for="nationality">Nationality <span style="color: red;">*</span></label>
                                     </div>
                                     <div class="col-md-8">
                                         <input type="text" class="form-control" name="nationality" id="nationality" placeholder="Nationality" required>
@@ -166,7 +166,7 @@
 
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
-                                        <label for="gender">Gender</label>
+                                        <label for="gender">Gender <span style="color: red;">*</span></label>
                                     </div>
                                     <div class="col-md-8">
                                         <select class="form-control custom-dropdown" name="gender" id="gender" required>
@@ -179,7 +179,7 @@
                                 
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
-                                        <label for="birth_date">Date of Birth</label>
+                                        <label for="birth_date">Date of Birth <span style="color: red;">*</span></label>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="input-group">
@@ -193,7 +193,7 @@
 
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
-                                        <label for="passport_number">Passport Number</label>
+                                        <label for="passport_number">Passport Number <span style="color: red;">*</span></label>
                                     </div>
                                     <div class="col-md-8">
                                         <input type="text" class="form-control" name="passport_number" id="passport_number" placeholder="Passport Number" required>
@@ -202,7 +202,7 @@
 
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
-                                        <label for="country_code">Whatsapp Number</label>
+                                        <label for="country_code">Whatsapp Number <span style="color: red;">*</span></label>
                                     </div>
                                     <div class="col-md-3">
                                         <select class="form-control custom-dropdown" name="country_code" id="country_code" required>
@@ -216,7 +216,7 @@
 
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
-                                        <label for="email">Email</label>
+                                        <label for="email">Email <span style="color: red;">*</span></label>
                                     </div>
                                     <div class="col-md-8">
                                         <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
@@ -225,7 +225,7 @@
 
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
-                                        <label for="permanent_address">Permanent Address</label>
+                                        <label for="permanent_address">Permanent Address <span style="color: red;">*</span></label>
                                     </div>
                                     <div class="col-md-8">
                                         <input type="text" class="form-control" name="permanent_address" id="permanent_address" placeholder="Permanent Address" required>
@@ -234,7 +234,7 @@
 
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
-                                        <label for="participation">Have you ever participated in this event?</label>
+                                        <label for="participation">Have you ever participated in this event? <span style="color: red;">*</span></label>
                                     </div>
                                     <div class="col-8">
                                         <div class="form-check form-check-inline">
@@ -328,8 +328,8 @@ $(document).ready(function() {
         }
 
         let formatted = day;
-        if (value.length >= 3) formatted += "/" + month;
-        if (value.length >= 5) formatted += "/" + year;
+        if (value.length >= 3) formatted += "-" + month;
+        if (value.length >= 5) formatted += "-" + year;
 
         $(this).val(formatted);
     });
@@ -424,14 +424,6 @@ $(document).ready(function() {
         participationYear.append($('<option>', { value: year, text: year }));
     }
 
-    var existingUserDetails = [];
-    $.getJSON('/existing_user_detail')
-        .done(function(data) {
-            existingUserDetails = data;
-        })
-        .fail(function(error) {
-            console.error('Error fetching user details:', error);
-        });
 
     $('form').on('submit', function(event) {
         event.preventDefault();
@@ -459,8 +451,10 @@ $(document).ready(function() {
             age--;
         }
 
-        var selectedCategory = $('input[name="category"]:checked').val();
-        if (selectedCategory === 'Recital') { 
+        let recitalChecked = $("#category_recital").is(":checked");
+        let memorisationChecked = $("#category_memorisation").is(":checked");
+        
+        if (recitalChecked ) {
             if (age < 18) {
                 Swal.fire({
                     title: 'Error',
@@ -470,7 +464,8 @@ $(document).ready(function() {
                     confirmButtonText: 'Ok'
                 });
                 return;
-            } else if (age >= 50) { 
+            }
+            else if (age > 50) {
                 Swal.fire({
                     title: 'Error',
                     text: 'Sorry, over the age limit.',
@@ -480,7 +475,9 @@ $(document).ready(function() {
                 });
                 return;
             }
-        } else if (selectedCategory === 'Memorisation') {
+        }
+
+        if (memorisationChecked) {
             if (age < 13) {
                 Swal.fire({
                     title: 'Error',
@@ -490,7 +487,8 @@ $(document).ready(function() {
                     confirmButtonText: 'Ok'
                 });
                 return;
-            } else if (age >= 25) {
+            }
+            else if (age > 25) {
                 Swal.fire({
                     title: 'Error',
                     text: 'Sorry, over the age limit.',
@@ -506,15 +504,16 @@ $(document).ready(function() {
         var countryCodeInput = $('#country_code').val().trim(); 
         var whatsappInput = $('#whatsapp_number').val().trim();
         var emailInput = $('#email').val().trim();
-
-        var sameCategoryUsers = existingUserDetails.filter(function(user) {
-            return user.category === selectedCategory;
-        });
-
-        if (sameCategoryUsers.some(user => user.passport_number === passportInput)) {
+        var fullWhatsappNumber = countryCodeInput + whatsappInput;
+        var category = '';
+        if (recitalChecked) {
+            category = 'recital';
+        } else if (memorisationChecked) {
+            category = 'memorisation';
+        } else {
             Swal.fire({
                 title: 'Error',
-                text: 'This passport number already exists.',
+                text: 'Please select a category.',
                 icon: 'error',
                 confirmButtonColor: '#00C853',
                 confirmButtonText: 'Ok'
@@ -522,46 +521,91 @@ $(document).ready(function() {
             return;
         }
 
-        var isDuplicateWhatsApp = sameCategoryUsers.some(user => 
-            user.country_code === countryCodeInput && user.whatsapp_number === whatsappInput
-        );
+        $.ajax({
+            url: "{{ route('existing_user_detail') }}",
+            type: "POST",
+            data: {
+                category: category,
+                _token: "{{ csrf_token() }}"
+            },
+            success: function(response) {
+                var passportCategoryMatch = response.filter(function(item) {
+                    return item.passport_number.trim() === passportInput;
+                });
 
-        if (isDuplicateWhatsApp) {
-            Swal.fire({
-                title: 'Error',
-                text: 'This WhatsApp number already exists.',
-                icon: 'error',
-                confirmButtonColor: '#00C853',
-                confirmButtonText: 'Ok'
-            });
-            return;
-        }
 
-        if (sameCategoryUsers.some(user => user.email === emailInput)) {
-            Swal.fire({
-                title: 'Error',
-                text: 'This email is already registered.',
-                icon: 'error',
-                confirmButtonColor: '#00C853',
-                confirmButtonText: 'Ok'
-            });
-            return;
-        }
+                var countryCodeMatch = response.filter(function(item) {
+                    return item.country_code.trim() === countryCodeInput;
+                });
 
-        Swal.fire({
-            title: 'Are you sure?',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#00C853',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes'
-        }).then(function(result) {
-            if (result.isConfirmed) {
-                event.currentTarget.submit();
+                var whatsappCategoryMatch = countryCodeMatch.filter(function(item) {
+                    return item.whatsapp_number.trim() === whatsappInput;
+                });
+
+                var emailCategoryMatch = response.filter(function(item) {
+                    return item.email.trim() === emailInput;
+                });
+
+                if (passportCategoryMatch.length > 0) {
+                    var passportCategories = passportCategoryMatch.map(item => item.category).join(', ');
+                    Swal.fire({
+                        title: 'Error',
+                        text: `This passport number has already been registered for ${passportCategories}.`,
+                        icon: 'error',
+                        confirmButtonColor: '#00C853',
+                        confirmButtonText: 'Ok'
+                    });
+                    return;
+                }
+
+                if ((countryCodeMatch.length >0) && (whatsappCategoryMatch.length > 0)) {
+                    var fullWhatsappNumber = whatsappCategoryMatch.map(item => item.category).join(', ');
+                    Swal.fire({
+                        title: 'Error',
+                        text: `This whatsapp number has already been registered for ${fullWhatsappNumber}.`,
+                        icon: 'error',
+                        confirmButtonColor: '#00C853',
+                        confirmButtonText: 'Ok'
+                    });
+                    return;
+                }
+
+                if (emailCategoryMatch.length > 0) {
+                    var emailCategories = emailCategoryMatch.map(item => item.category).join(', ');
+                    Swal.fire({
+                        title: 'Error',
+                        text: `This email has already been registered for ${emailCategories}.`,
+                        icon: 'error',
+                        confirmButtonColor: '#00C853',
+                        confirmButtonText: 'Ok'
+                    });
+                    return;
+                }
+
+                Swal.fire({
+                    title: 'Are you sure?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#00C853',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes'
+                }).then(function(result) {
+                    if (result.isConfirmed) {
+                        event.currentTarget.submit();
+                    }
+                });
+            },
+            error: function(xhr) {
+                Swal.fire({
+                    title: 'Error',
+                    text: 'Could not validate passport number. Please try again later.',
+                    icon: 'error',
+                    confirmButtonColor: '#00C853',
+                    confirmButtonText: 'Ok'
+                });
             }
         });
     });
-
 
     $('#participation_yes').on('change', function() {
         $('#additional-fields').show();
