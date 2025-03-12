@@ -595,15 +595,6 @@ $(document).ready(function() {
                     }
                 });
             },
-            error: function(xhr) {
-                Swal.fire({
-                    title: 'Error',
-                    text: 'Could not validate passport number. Please try again later.',
-                    icon: 'error',
-                    confirmButtonColor: '#00C853',
-                    confirmButtonText: 'Ok'
-                });
-            }
         });
     });
 
