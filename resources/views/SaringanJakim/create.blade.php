@@ -522,7 +522,7 @@ $(document).ready(function() {
         }
 
         $.ajax({
-            url: "{{ route('existing_user_detail') }}",
+            url: "/existing_user_detail",
             type: "POST",
             data: {
                 category: category,
