@@ -674,14 +674,24 @@ $(document).ready(function() {
 
     cropButton.on('click', function() {
         if (profileCroppieInstance) {
-            profileCroppieInstance.result({ type: "base64" }).then(function(dataImg) {
-                resultImage.html('<img src="' + dataImg + '" class="img-fluid" />');
-                showImage.hide();
-                showCroppedImage.show();
+            profileCroppieInstance.result({ 
+                type: "base64", 
+                size: { width: 500, height: 500 } 
+            }).then(function(dataImg) {
+                profileCroppieInstance.result({ 
+                    type: "base64", 
+                    size: { width: 300, height: 300 } 
+                }).then(function(previewImg) {
+                    resultImage.html('<img src="' + previewImg + '" class="img-fluid" />'); 
+                    showImage.hide();
+                    showCroppedImage.show();
+                });
+
                 $('#photo').val(dataImg);
             });
         }
     });
+
 
     editPassportPicture.on('change', function() {
         var file = this.files[0];
@@ -706,12 +716,21 @@ $(document).ready(function() {
         reader.readAsDataURL(file);
     });
 
-    cropPassportButton.on('click', function() {
+        cropPassportButton.on('click', function() {
         if (passportCroppieInstance) {
-            passportCroppieInstance.result({ type: "base64" }).then(function(passportImg) {
-                passportResultImage.html('<img src="' + passportImg + '" class="img-fluid" />');
-                showPassportImage.hide();
-                showCroppedPassportImage.show();
+            passportCroppieInstance.result({ 
+                type: "base64", 
+                size: { width: 500, height: 500 } 
+            }).then(function(passportImg) {
+                passportCroppieInstance.result({ 
+                    type: "base64", 
+                    size: { width: 300, height: 300 } 
+                }).then(function(previewImg) {
+                    passportResultImage.html('<img src="' + previewImg + '" class="img-fluid" />'); 
+                    showPassportImage.hide();
+                    showCroppedPassportImage.show();
+                });
+
                 $('#passport_image').val(passportImg);
             });
         }
