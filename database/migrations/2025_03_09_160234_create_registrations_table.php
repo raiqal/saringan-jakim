@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('type', 15);
             $table->year('year'); 
             $table->string('category', 15);
-            $table->unsignedBigInteger('category_id'); 
+            $table->int('category_id'); 
             $table->unsignedBigInteger('contestant_id')->nullable(); 
             $table->string('country', 100); 
             $table->string('full_name', 100);
@@ -36,8 +36,8 @@ return new class extends Migration
             $table->string('ranking', 100)->nullable(); 
             $table->string('photo'); 
             $table->string('passport_image'); 
-            $table->string('islamic_body_authority_file'); 
-            $table->string('malawakil_file');
+            $table->string('islamic_body_authority_file')->nullable(); 
+            $table->string('malawakil_file')->nullable();
             $table->timestamps();
             $table->softDeletes();
             

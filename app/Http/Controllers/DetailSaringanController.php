@@ -35,8 +35,8 @@ class DetailSaringanController extends Controller
             'participation' => 'required',
             'photo' => 'required',
             'passport_image' => 'required',
-            'islamic_body_authority_file' => 'required|file|mimes:pdf,doc,docx',
-            'malawakil_file' => 'required|file|mimes:pdf,doc,docx',
+            // 'islamic_body_authority_file' => 'required|file|mimes:pdf,doc,docx',
+            // 'malawakil_file' => 'required|file|mimes:pdf,doc,docx',
         ]);
 
         try {
@@ -77,21 +77,21 @@ class DetailSaringanController extends Controller
                     $saringanDetail->passport_image = url('storage/' . $passportPath);
                 }
 
-                if ($request->hasFile('islamic_body_authority_file')) {
-                    $file = $request->file('islamic_body_authority_file');
-                    $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
-                    $filePath = 'islamic_body_authority_files/' . $fileName;
-                    Storage::disk('public')->put($filePath, file_get_contents($file));
-                    $saringanDetail->islamic_body_authority_file = url('storage/' . $filePath);
-                }
+                // if ($request->hasFile('islamic_body_authority_file')) {
+                //     $file = $request->file('islamic_body_authority_file');
+                //     $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
+                //     $filePath = 'islamic_body_authority_files/' . $fileName;
+                //     Storage::disk('public')->put($filePath, file_get_contents($file));
+                //     $saringanDetail->islamic_body_authority_file = url('storage/' . $filePath);
+                // }
 
-                if ($request->hasFile('malawakil_file')) {
-                    $file = $request->file('malawakil_file');
-                    $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
-                    $filePath = 'malawakil_files/' . $fileName;
-                    Storage::disk('public')->put($filePath, file_get_contents($file));
-                    $saringanDetail->malawakil_file = url('storage/' . $filePath);
-                }
+                // if ($request->hasFile('malawakil_file')) {
+                //     $file = $request->file('malawakil_file');
+                //     $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
+                //     $filePath = 'malawakil_files/' . $fileName;
+                //     Storage::disk('public')->put($filePath, file_get_contents($file));
+                //     $saringanDetail->malawakil_file = url('storage/' . $filePath);
+                // }
 
                 $saringanDetail->save();
             }

@@ -86,7 +86,7 @@
                     
 
                     <div class="col-md-8">
-                        <div class="row">
+                        {{-- <div class="row">
                             <div class="col-md-6">
                                 <div class="card mb-4">
                                     <div class="card-body">
@@ -113,7 +113,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">Other</h5>
@@ -761,13 +761,13 @@ $(document).ready(function() {
         return true;
     }
 
-    $('#islamic_body_authority_file, #malawakil_file').on('change', function() {
-        var file = this.files[0];
-        if (!file || !validateFile(file)) {
-            $(this).val('');
-            return;
-        }
-    });
+    // $('#islamic_body_authority_file, #malawakil_file').on('change', function() {
+    //     var file = this.files[0];
+    //     if (!file || !validateFile(file)) {
+    //         $(this).val('');
+    //         return;
+    //     }
+    // });
 
 });
 </script>
