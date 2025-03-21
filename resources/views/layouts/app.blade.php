@@ -111,8 +111,14 @@
 </head>
 <body>
     <div id="app">
+        @php
+            $baseYear = 2025; 
+            $baseAssemblyNumber = 65;
+            $currentYear = date('Y');
+            $currentAssemblyNumber = $baseAssemblyNumber + ($currentYear - $baseYear);
+        @endphp
         <header>
-            REGISTRATION OF PARTICIPANT FOR 64TH INTERNATIONAL ASSEMBLY MALAYSIA SCREENING SESSION
+            REGISTRATION OF PARTICIPANT FOR {{ $currentAssemblyNumber }}TH MALAYSIA INTERNATIONAL QURAN RECITAL COMPETITION SCREENING SESSION
         </header>
 
         <main class="py-4">
