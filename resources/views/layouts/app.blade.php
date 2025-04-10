@@ -112,13 +112,12 @@
 <body>
     <div id="app">
         @php
-            $baseYear = 2025; 
-            $baseAssemblyNumber = 65;
             $currentYear = date('Y');
-            $currentAssemblyNumber = $baseAssemblyNumber + ($currentYear - $baseYear);
+            $baseYear = 2025 + ($currentYear - 2025); 
+            $hijrahYear = 1447 + ($currentYear - 2025);
         @endphp
         <header>
-            REGISTRATION OF PARTICIPANT FOR {{ $currentAssemblyNumber }}TH MALAYSIA INTERNATIONAL QURAN RECITAL COMPETITION SCREENING SESSION
+            APPLICATION FORM FOR THE SCREENING SESSION OF THE MALAYSIA INTERNATIONALAL-QURAN RECITAL AND MEMORIZATION ASSEMBLY {{ $hijrahYear }}H/{{ $baseYear }}M
         </header>
 
         <main class="py-4">

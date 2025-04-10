@@ -22,44 +22,54 @@ class DetailSaringanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'category' => 'required',
             'full_name' => 'required',
             'country' => 'required',
             'nationality' => 'required',
             'gender' => 'required',
             'birth_date' => 'required',
-            'passport_number' => 'required',
+            'birth_place' => 'required',
+            'email' => 'required|email',
+            'country_code' => 'required',
             'whatsapp_number' => 'required',
-            'email' => 'required',
             'permanent_address' => 'required',
+            'category' => 'required',
             'participation' => 'required',
+            'narration' => 'required',
+            'nominating_applicant_country' => 'required',
+            'address_applicant_country' => 'required',
+            'mobile_applicant_country' => 'required',
+            'email_applicant_country' => 'required',
+            'nearest_malaysian_embassy' => 'required',
             'photo' => 'required',
             'passport_image' => 'required',
-            // 'islamic_body_authority_file' => 'required|file|mimes:pdf,doc,docx',
-            // 'malawakil_file' => 'required|file|mimes:pdf,doc,docx',
         ]);
 
         try {
             foreach ($request->category as $category) {
                 $saringanDetail = new DetailSaringan();
                 $saringanDetail->type = 'International';
-                $saringanDetail->year = date('Y');
-                $saringanDetail->category = $category;
-                $saringanDetail->category_id = ($category == 'Recital') ? 66 : 67;
                 $saringanDetail->full_name = $request->full_name;
                 $saringanDetail->country = $request->country;
                 $saringanDetail->nationality = $request->nationality;
                 $saringanDetail->gender = $request->gender;
                 $saringanDetail->birth_date = date('Y-m-d', strtotime($request->birth_date)); 
-                $saringanDetail->passport_number = $request->passport_number;
+                $saringanDetail->birth_place = $request->birth_place;
+                $saringanDetail->email = $request->email;
                 $saringanDetail->country_code = $request->country_code;
                 $saringanDetail->whatsapp_number = $request->whatsapp_number;
-                $saringanDetail->email = $request->email;
                 $saringanDetail->permanent_address = $request->permanent_address;
+                $saringanDetail->year = date('Y');
+                $saringanDetail->category = $category;
+                $saringanDetail->category_id = ($category == 'Recital') ? 66 : 67;
                 $saringanDetail->participation = $request->participation;
-                $saringanDetail->country_representation = $request->country_representation;
                 $saringanDetail->participation_year = $request->participation_year;
-                $saringanDetail->ranking = $request->ranking;
+                $saringanDetail->narration = implode(',', $request->narration); 
+                $saringanDetail->other_narration = $request->other_narration ;
+                $saringanDetail->nominating_applicant_country = $request->nominating_applicant_country;
+                $saringanDetail->address_applicant_country = $request->address_applicant_country;
+                $saringanDetail->mobile_applicant_country = $request->mobile_applicant_country;
+                $saringanDetail->email_applicant_country = $request->email_applicant_country;
+                $saringanDetail->nearest_malaysian_embassy = $request->nearest_malaysian_embassy;
 
                 if ($request->has('photo')) {
                     $photoData = base64_decode(preg_replace('/^data:image\/\w+;base64,/', '', $request->photo));
@@ -77,22 +87,6 @@ class DetailSaringanController extends Controller
                     $saringanDetail->passport_image = url('storage/' . $passportPath);
                 }
 
-                // if ($request->hasFile('islamic_body_authority_file')) {
-                //     $file = $request->file('islamic_body_authority_file');
-                //     $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
-                //     $filePath = 'islamic_body_authority_files/' . $fileName;
-                //     Storage::disk('public')->put($filePath, file_get_contents($file));
-                //     $saringanDetail->islamic_body_authority_file = url('storage/' . $filePath);
-                // }
-
-                // if ($request->hasFile('malawakil_file')) {
-                //     $file = $request->file('malawakil_file');
-                //     $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
-                //     $filePath = 'malawakil_files/' . $fileName;
-                //     Storage::disk('public')->put($filePath, file_get_contents($file));
-                //     $saringanDetail->malawakil_file = url('storage/' . $filePath);
-                // }
-
                 $saringanDetail->save();
             }
 
@@ -102,7 +96,6 @@ class DetailSaringanController extends Controller
             return redirect()->route('saringan.create')->with('error', 'Data unable to save');
         }
     }
-
 
     public function getCountryCodes()
     {

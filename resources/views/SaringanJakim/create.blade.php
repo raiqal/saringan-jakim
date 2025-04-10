@@ -9,7 +9,6 @@
                       <h5>Participation Form</h5>
                   </div>
               </div>
-
               <div class="card-body">
                   @if ($message = Session::get('success'))
                       <div class="alert alert-success" role="alert">
@@ -23,7 +22,7 @@
                       </div>
                   @endif
             <form  method="POST" action="{{ route('saringan.store') }}" enctype="multipart/form-data"> 
-            @csrf
+                @csrf
                 <div class="row mb-4">
                     <div class="col-md-4">
                         <div class="card mb-4">
@@ -54,7 +53,6 @@
                                 </div>
                             </div>
                         </div>
-                    
                         <div class="card mb-4">
                             <div class="card-body">
                                 <h5 class="card-title">Passport</h5>
@@ -83,90 +81,41 @@
                             </div>
                         </div>
                     </div>
-                    
-
                     <div class="col-md-8">
-                        {{-- <div class="row">
-                            <div class="col-md-6">
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <h5 class="card-title">File Islamic Body Authorities</h5>
-                                        <div class="mb-3">
-                                            <input type="file" name="islamic_body_authority_file" id="islamic_body_authority_file" class="form-control" aria-describedby="file" required>
-                                            <small style="font-size: 12px; font-weight: bold; color: black;">
-                                                <span style="color: red;">*</span> Only files in PDF and file sizes below 5MB are allowed.
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="card mb-4">
-                                    <div class="card-body">
-                                        <h5 class="card-title">File Malawakil</h5>
-                                        <div class="mb-3">
-                                            <input type="file" name="malawakil_file" id="malawakil_file" class="form-control" aria-describedby="file" required>
-                                            <small style="font-size: 12px; font-weight: bold; color: black;">
-                                                <span style="color: red;">*</span> Only files in PDF and file sizes below 5MB are allowed.
-                                            </small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> --}}
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">Other</h5>
+                                <h5 class="card-title">Participation Information</h5>
                                 <br>
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
-                                        <div class="col-md-6">
-                                            <label for="category">Category <span style="color: red;">*</span></label>
-                                        </div>
-                                    </div>
-                                    <div class="col-8">
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" name="category[]" id="category_recital" value="Recital">
-                                            <label class="form-check-label" for="category_recital">Recital</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" name="category[]" id="category_memorisation" value="Memorisation">
-                                            <label class="form-check-label" for="category_memorisation">Memorisation</label>
-                                        </div>
-                                    </div>
-                                </div>                                
-                                <div class="row mb-3 d-flex justify-content-start">
-                                    <div class="col-4">
                                             <label for="full_name">Full Name <span style="color: red;">*</span></label>
+                                        <small class="text-muted">(*according to the passport / identification document)</small>
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" name="full_name" id="full_name" placeholder="Full Name" required>
+                                        <input type="text" class="form-control" name="full_name" id="full_name" placeholder="Click or tap here to enter text" required>
                                     </div>
-                                </div>
-
+                                </div>  
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
-                                        <label for="country">Represent Country <span style="color: red;">*</span></label>
+                                        <label for="country">Country<span style="color: red;">*</span></label>
                                     </div>
                                     <div class="col-md-8">
                                         <select class="form-control custom-dropdown" name="country" id="country" required>
                                             <option value="" disabled selected>Select country</option>
                                         </select>
                                     </div>
-                                </div>
-
+                                </div>                              
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
                                         <label for="nationality">Nationality <span style="color: red;">*</span></label>
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" name="nationality" id="nationality" placeholder="Nationality" required>
+                                        <input type="text" class="form-control" name="nationality" id="nationality" placeholder="Click or tap here to enter text" required>
                                     </div>
                                 </div>
-
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
-                                        <label for="gender">Gender <span style="color: red;">*</span></label>
+                                        <label for="gender">Sex <span style="color: red;">*</span></label>
                                     </div>
                                     <div class="col-md-8">
                                         <select class="form-control custom-dropdown" name="gender" id="gender" required>
@@ -176,30 +125,35 @@
                                         </select>
                                     </div>
                                 </div>
-                                
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
                                         <label for="birth_date">Date of Birth <span style="color: red;">*</span></label>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" name="birth_date" id="birth_date" placeholder="dd-mm-yyyy" required>
+                                            <input type="text" class="form-control" name="birth_date" id="birth_date" placeholder="Click or tap here to enter text" required>
                                             <span class="input-group-text">
                                                 <i class="fas fa-calendar-alt"></i>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
-                                        <label for="passport_number">Passport Number <span style="color: red;">*</span></label>
+                                        <label for="birth_place">Place of Birth <span style="color: red;">*</span></label>
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" name="passport_number" id="passport_number" placeholder="Passport Number" required>
+                                        <input type="text" class="form-control" name="birth_place" id="birth_place" placeholder="Click or tap here to enter text" required>
                                     </div>
                                 </div>
-
+                                <div class="row mb-3 d-flex justify-content-start">
+                                    <div class="col-4">
+                                        <label for="email">Email <span style="color: red;">*</span></label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="Click or tap here to enter text" required>
+                                    </div>
+                                </div>
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
                                         <label for="country_code">Whatsapp Number <span style="color: red;">*</span></label>
@@ -210,33 +164,74 @@
                                         </select>
                                     </div>
                                     <div class="col-md-5">
-                                        <input type="text" class="form-control" name="whatsapp_number" id="whatsapp_number" placeholder="Whatsapp Number" required>
+                                        <input type="text" class="form-control" name="whatsapp_number" id="whatsapp_number" placeholder="Click or tap here to enter text" required>
                                     </div>
                                 </div>
-
-                                <div class="row mb-3 d-flex justify-content-start">
-                                    <div class="col-4">
-                                        <label for="email">Email <span style="color: red;">*</span></label>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
-                                    </div>
-                                </div>
-
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
                                         <label for="permanent_address">Permanent Address <span style="color: red;">*</span></label>
                                     </div>
                                     <div class="col-md-8">
-                                        <input type="text" class="form-control" name="permanent_address" id="permanent_address" placeholder="Permanent Address" required>
+                                        <input type="text" class="form-control" name="permanent_address" id="permanent_address" placeholder="Click or tap here to enter text" required>
                                     </div>
                                 </div>
-
                                 <div class="row mb-3 d-flex justify-content-start">
                                     <div class="col-4">
-                                        <label for="participation">Have you ever participated in this event? <span style="color: red;">*</span></label>
+                                        <div class="col-md-6">
+                                            <label for="category">Category <span style="color: red;">*</span></label>
+                                        </div>
                                     </div>
                                     <div class="col-8">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="category[]" id="category_recital" value="Recital">
+                                            <label class="form-check-label" for="category_recital">Al-Quran Recitation (Tilawah Mujawwad)</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="checkbox" name="category[]" id="category_memorisation" value="Memorisation">
+                                            <label class="form-check-label" for="category_memorisation">Memorising 30 Juz</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 d-flex justify-content-start">
+                                    <div class="col-4">
+                                        <div class="col-md">
+                                            <label for="narration">Narration would you like to recite <span style="color: red;">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="col-md-8 d-flex flex-wrap">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="narration[]" id="hafs" value="Hafs">
+                                                <label class="form-check-label" for="hafs">Hafs</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="narration[]" id="warsh" value="Warsh">
+                                                <label class="form-check-label" for="warsh">Warsh</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="narration[]" id="qalun" value="Qalun">
+                                                <label class="form-check-label" for="qalun">Qalun</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" name="narration[]" id="al_dury" value="Al-Dury">
+                                                <label class="form-check-label" for="al_dury">Al-Dury</label>
+                                            </div>
+                                        </div>
+                                    </div>                                    
+                                </div>                                
+                                <div class="row mb-3 d-flex justify-content-start">
+                                    <div class="col-4">
+                                        <label for="other_narration">Other Narration</label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control" name="other_narration" id="other_narration" placeholder="Click or tap here to enter text">
+                                    </div>
+                                </div>
+                                <div class="row mb-3 d-flex justify-content-start">
+                                    <div class="col-9">
+                                        <label for="participation">Have you participated in this competition in the last 3 years in Malaysia? <span style="color: red;">*</span></label>
+                                    </div>
+                                    <div class="col-3">
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="participation" id="participation_yes" value="Yes" required>
                                             <label class="form-check-label" for="participation_yes">Yes</label>
@@ -251,32 +246,63 @@
                                 <div id="additional-fields" style="display: none;">
                                     <div class="row mb-3 d-flex justify-content-start">
                                         <div class="col-4">
-                                            <label for="country_representation">Country Representation</label>
-                                        </div>
-                                        <div class="col-8">
-                                            <select class="form-control custom-dropdown" name="country_representation" id="country_representation">
-                                                <option value="" disabled selected>Select country</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="row mb-3 d-flex justify-content-start">
-                                        <div class="col-4">
                                             <label for="participation_year">Participation Year</label>
                                         </div>
                                         <div class="col-8">
-                                            <select class="form-control" name="participation_year" id="participation_year">
-                                                <option value="">Select year</option>
-                                            </select>
+                                            <input type="number" class="form-control" name="participation_year" id="participation_year" placeholder="Click or tap here to enter text">
                                         </div>
                                     </div>
-
-                                    <div class="row mb-3 d-flex justify-content-start">
-                                        <div class="col-4">
-                                            <label for="ranking">Ranking</label>
+                                </div>
+                                <br>
+                                <h5 class="card-title">Applicant’s Country Information</h5>
+                                <br>
+                                <div class="row mb-3 d-flex justify-content-start">
+                                    <div class="col-4">
+                                        <label for="nominating_applicant_country">Name of Nominating Applicant’s Country <span style="color: red;">*</span></label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="col-md">
+                                            <input type="text" class="form-control" name="nominating_applicant_country" id="nominating_applicant_country" placeholder="Click or tap here to enter text" required>
                                         </div>
-                                        <div class="col-8">
-                                            <input type="text" class="form-control" name="ranking" id="ranking" placeholder="Ranking" >
+                                    </div>
+                                </div>
+                                <div class="row mb-3 d-flex justify-content-start">
+                                    <div class="col-4">
+                                        <label for="address_applicant_country">Address of Applicant’s Country<span style="color: red;">*</span></label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="col-md">
+                                            <input type="text" class="form-control" name="address_applicant_country" id="address_applicant_country" placeholder="Click or tap here to enter text" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 d-flex justify-content-start">
+                                    <div class="col-4">
+                                        <label for="mobile_applicant_country">Mobile<span style="color: red;">*</span></label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="col-md">
+                                            <input type="text" class="form-control" name="mobile_applicant_country" id="mobile_applicant_country" placeholder="Click or tap here to enter text" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 d-flex justify-content-start">
+                                    <div class="col-4">
+                                        <label for="email_applicant_country">Email<span style="color: red;">*</span></label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="col-md">
+                                            <input type="text" class="form-control" name="email_applicant_country" id="email_applicant_country" placeholder="Click or tap here to enter text" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-3 d-flex justify-content-start">
+                                    <div class="col-4">
+                                        <label for="nearest_malaysian_embassy">What is the nearest Malaysian Embassy to you<span style="color: red;">*</span></label>
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="col-md">
+                                            <input type="text" class="form-control" name="nearest_malaysian_embassy" id="nearest_malaysian_embassy" placeholder="Click or tap here to enter text" required>
                                         </div>
                                     </div>
                                 </div>
@@ -296,7 +322,7 @@
 <script>
 $(document).ready(function() {
 
-    var fields = ["full_name", "passport_number", "nationality", "permanent_address","ranking"];
+    var fields = ["full_name","nationality", "permanent_address", "other_narration", "nominating_applicant_country", "address_applicant_country", "nearest_malaysian_embassy", "birth_place"];
     $.each(fields, function(i, id) {
         $('#' + id).on('input', function() {
             $(this).val($(this).val().toUpperCase());
@@ -334,7 +360,10 @@ $(document).ready(function() {
         $(this).val(formatted);
     });
 
-
+    $("#mobile_applicant_country").on("input", function () {
+        $(this).val($(this).val().replace(/[^0-9+]/g, ""));
+    });
+    
     $('#country').select2({
         placeholder: 'Select country',
         allowClear: true,
@@ -349,21 +378,9 @@ $(document).ready(function() {
         allowClear: true,
         width: '100%'
     });
-    $('#country_representation').select2({
-        placeholder: 'Select country',
-        allowClear: true,
-        width: '100%'
-    });
-    $('#participation_year').select2({
-        placeholder: 'Select year',
-        allowClear: true,
-        width: '100%'
-    });
-
     $.getJSON('/country_code')
         .done(function(data) {
             var countrySelect = $('#country');
-            var countryRepresentationSelect = $('#country_representation');
             var countryCodeSelect = $('#country_code');
             var whatsappNumberInput = $('#whatsapp_number');
 
@@ -383,9 +400,6 @@ $(document).ready(function() {
                 var codeOption = new Option(country.dial_code, country.dial_code);
                 $(codeOption).data('image', country.image);
                 countryCodeSelect.append(codeOption);
-
-                var representationOption = new Option(country.name, country.name);
-                countryRepresentationSelect.append(representationOption);
             });
 
             countrySelect.on('change', function() {
@@ -417,14 +431,6 @@ $(document).ready(function() {
         .fail(function(error) {
             console.error('Error fetching countries:', error);
         });
-
-    var participationYear = $('#participation_year');
-    var currentYear = new Date().getFullYear();
-    for (var year = currentYear; year >= 2000; year--) {
-        participationYear.append($('<option>', { value: year, text: year }));
-    }
-
-
     $('form').on('submit', function(event) {
         event.preventDefault();
 
@@ -499,8 +505,6 @@ $(document).ready(function() {
                 return;
             }
         }
-
-        var passportInput = $('#passport_number').val().trim();
         var countryCodeInput = $('#country_code').val().trim(); 
         var whatsappInput = $('#whatsapp_number').val().trim();
         var emailInput = $('#email').val().trim();
@@ -529,10 +533,6 @@ $(document).ready(function() {
                 _token: "{{ csrf_token() }}"
             },
             success: function(response) {
-                var passportCategoryMatch = response.filter(function(item) {
-                    return item.passport_number.trim() === passportInput;
-                });
-
 
                 var countryCodeMatch = response.filter(function(item) {
                     return item.country_code.trim() === countryCodeInput;
@@ -545,18 +545,6 @@ $(document).ready(function() {
                 var emailCategoryMatch = response.filter(function(item) {
                     return item.email.trim() === emailInput;
                 });
-
-                if (passportCategoryMatch.length > 0) {
-                    var passportCategories = passportCategoryMatch.map(item => item.category).join(', ');
-                    Swal.fire({
-                        title: 'Error',
-                        text: `This passport number has already been registered for ${passportCategories}.`,
-                        icon: 'error',
-                        confirmButtonColor: '#00C853',
-                        confirmButtonText: 'Ok'
-                    });
-                    return;
-                }
 
                 if ((countryCodeMatch.length >0) && (whatsappCategoryMatch.length > 0)) {
                     var fullWhatsappNumber = whatsappCategoryMatch.map(item => item.category).join(', ');
@@ -760,15 +748,6 @@ $(document).ready(function() {
         }
         return true;
     }
-
-    // $('#islamic_body_authority_file, #malawakil_file').on('change', function() {
-    //     var file = this.files[0];
-    //     if (!file || !validateFile(file)) {
-    //         $(this).val('');
-    //         return;
-    //     }
-    // });
-
 });
 </script>
 
